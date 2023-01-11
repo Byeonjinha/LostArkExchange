@@ -9,12 +9,18 @@ import SwiftUI
 
 @main
 struct LostArkExchangeApp: App {
+    @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
+    @StateObject private var searchEvent = EventAPI.shared
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .onAppear{
+                    searchAuctionOptions.getMyIP()
+                    searchEvent.getMyIP()
+                }
         }
     }
 }
