@@ -46,16 +46,20 @@ struct CategoriesPickerView: UIViewRepresentable {
 }
 
 class CategoriesUIPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource, ObservableObject {
+    
     @Published var choicedCategorie: Int?
     @Published var choicedGrade: Int?
     @Published var itemGradeQuality: Int?
     @Published var itemTier: Int?
     
+    var labelTexts = ["카테고리", "등급", "품질", "티어"]
     var categories: [(Int, String)]?
     var itemGrades: [String]?
     var itemGradeQualities: [Int]?
     var itemTiers: [Int]?
     
+    let labelStartLocation: [Double] = [0, 0.28, 0.44, 0.58]
+    let labelWidth: [Double] = [0.28, 0.16, 0.14, 0.14]
     init(categories: [(Int, String)], itemGrades: [String], itemGradeQualities: [Int], itemTiers: [Int]) {
         self.categories = categories
         self.itemGrades = itemGrades
@@ -63,6 +67,13 @@ class CategoriesUIPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDa
         self.itemTiers = itemTiers
         
         super.init(frame: .zero)
+        for index in 0..<labelTexts.count {
+            let label: UILabel = UILabel.init(frame: CGRectMake(w * 0.03 + w * labelStartLocation[index], 0,  w * labelWidth[index], 20))
+            label.text = labelTexts[index]
+            label.font = UIFont(name: "ArialHebrew", size: UIFont.labelFontSize)
+            label.textAlignment = .center
+            self.addSubview(label)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -79,7 +90,7 @@ class CategoriesUIPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDa
         case 1 :
             return itemGrades!.count
         case 2 :
-            return itemGradeQualities!.count + 1
+            return itemGradeQualities!.count + 2
         case 3 :
             return itemTiers!.count
         default:
@@ -97,7 +108,9 @@ class CategoriesUIPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDa
         case 2 :
             if itemGradeQualities!.count > row {
                 searchingItemData = String(itemGradeQualities![row]) }
-            else {
+            else if itemGradeQualities!.count == row {
+                searchingItemData = "100"
+            } else {
                 searchingItemData = "없음"
             }
         case 3 :
@@ -149,13 +162,14 @@ class CategoriesUIPickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         switch component {
         case 0 :
-            return UIScreen.main.bounds.width * 0.28
+            let labelWidth = w * 0.28
+            return labelWidth
         case 1 :
-            return UIScreen.main.bounds.width * 0.16
+            return w * 0.16
         case 2 :
-            return UIScreen.main.bounds.width * 0.14
+            return w * 0.14
         case 3 :
-            return UIScreen.main.bounds.width * 0.14
+            return w * 0.14
         default:
             return 0
         }

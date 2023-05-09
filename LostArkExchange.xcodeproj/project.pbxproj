@@ -3,10 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2306B417386D94ED62B9A6E2 /* Pods_LostArkExchange_LostArkExchangeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E01163D56FDE63D59A5CD2A /* Pods_LostArkExchange_LostArkExchangeUITests.framework */; };
+		68D1E42E18B567C787C31D65 /* Pods_LostArkExchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD6C7188F1F4FADEA0094545 /* Pods_LostArkExchange.framework */; };
+		8621A627CC119920E412C4D7 /* Pods_LostArkExchangeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A114930CEF5742BB6AA46DF3 /* Pods_LostArkExchangeTests.framework */; };
+		BA177C5E2976BB7C00988613 /* CharactersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA177C5D2976BB7C00988613 /* CharactersAPI.swift */; };
+		BA177C602976BE7D00988613 /* CharacterSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA177C5F2976BE7D00988613 /* CharacterSearchView.swift */; };
+		BA177C632976CA2600988613 /* CharacterStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA177C622976CA2600988613 /* CharacterStatusView.swift */; };
+		BA177C652976CB7E00988613 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA177C642976CB7E00988613 /* CharacterDetailView.swift */; };
+		BA177C6729772F1600988613 /* CharacterProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA177C6629772F1600988613 /* CharacterProfileAPI.swift */; };
+		BA177C69297806FC00988613 /* TextLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA177C68297806FC00988613 /* TextLimiter.swift */; };
 		BA379DBD2965650D00FC1F28 /* LostArkExchangeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379DBC2965650D00FC1F28 /* LostArkExchangeApp.swift */; };
 		BA379DBF2965650D00FC1F28 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379DBE2965650D00FC1F28 /* MainView.swift */; };
 		BA379DC12965650E00FC1F28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA379DC02965650E00FC1F28 /* Assets.xcassets */; };
@@ -35,7 +44,31 @@
 		BA379E58296C139C00FC1F28 /* EtcOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379E57296C139C00FC1F28 /* EtcOptionsView.swift */; };
 		BA379E5A296C144000FC1F28 /* SkillOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379E59296C144000FC1F28 /* SkillOptionsView.swift */; };
 		BA794493296C180800D8B8CA /* ItemSkillOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA794492296C180800D8B8CA /* ItemSkillOptionsView.swift */; };
-		BA794497296D623800D8B8CA /* SearcedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA794496296D623800D8B8CA /* SearcedItemView.swift */; };
+		BA794497296D623800D8B8CA /* SearchedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA794496296D623800D8B8CA /* SearchedItemView.swift */; };
+		BA794499296E98C100D8B8CA /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA794498296E98C100D8B8CA /* ColorExtension.swift */; };
+		BA7944A529701A3F00D8B8CA /* AdmobBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7944A429701A3F00D8B8CA /* AdmobBanner.swift */; };
+		BA7944A72970200000D8B8CA /* DisconnectedNetWorkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7944A62970200000D8B8CA /* DisconnectedNetWorkView.swift */; };
+		BA7944AA2970207800D8B8CA /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7944A92970207800D8B8CA /* NetworkReachability.swift */; };
+		BA7944AC297073ED00D8B8CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7944AB297073ED00D8B8CA /* AppDelegate.swift */; };
+		BA9FEF6E297A767200BC0669 /* EquipmentsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF6D297A767200BC0669 /* EquipmentsAPI.swift */; };
+		BA9FEF70298112A200BC0669 /* CharacterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF6F298112A200BC0669 /* CharacterImageView.swift */; };
+		BA9FEF722981AA1B00BC0669 /* HTMLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF712981AA1B00BC0669 /* HTMLView.swift */; };
+		BA9FEF752981BE8B00BC0669 /* EngravingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF742981BE8B00BC0669 /* EngravingsAPI.swift */; };
+		BA9FEF772982E43E00BC0669 /* CharacterDetailEquipmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF762982E43E00BC0669 /* CharacterDetailEquipmentsView.swift */; };
+		BA9FEF7A2982F6BE00BC0669 /* ItemConditionAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF792982F6BE00BC0669 /* ItemConditionAddView.swift */; };
+		BA9FEF7D298309EA00BC0669 /* EquipmentDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF7C298309EA00BC0669 /* EquipmentDescriptionView.swift */; };
+		BA9FEF7F29831EDB00BC0669 /* EngravingDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF7E29831EDB00BC0669 /* EngravingDescriptionView.swift */; };
+		BA9FEF8129832BFE00BC0669 /* AccessoriesDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF8029832BFE00BC0669 /* AccessoriesDescriptionView.swift */; };
+		BA9FEF8529833EFD00BC0669 /* BraceletDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF8429833EFD00BC0669 /* BraceletDescriptionView.swift */; };
+		BA9FEF872983B15800BC0669 /* AbilityStoneDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF862983B15800BC0669 /* AbilityStoneDescriptionView.swift */; };
+		BAE5819B2A0A2C24009A1567 /* CharacterViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819A2A0A2C24009A1567 /* CharacterViewModel .swift */; };
+		BAE5819D2A0A3253009A1567 /* MangnaniMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819C2A0A3253009A1567 /* MangnaniMethods.swift */; };
+		BAE581A02A0A3986009A1567 /* CharacterEquipmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819F2A0A3986009A1567 /* CharacterEquipmentsView.swift */; };
+		BAE581A22A0A3C11009A1567 /* CharacterEngravingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE581A12A0A3C11009A1567 /* CharacterEngravingsView.swift */; };
+		BAE581A42A0A3D5B009A1567 /* CharacterAccesoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE581A32A0A3D5B009A1567 /* CharacterAccesoriesView.swift */; };
+		BAE581A62A0A46D9009A1567 /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE581A52A0A46D9009A1567 /* CharacterModel.swift */; };
+		BAE581A82A0A499B009A1567 /* CharacterBraceletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE581A72A0A499B009A1567 /* CharacterBraceletsView.swift */; };
+		BAE581AA2A0A4AED009A1567 /* CharacterAbilitystone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE581A92A0A4AED009A1567 /* CharacterAbilitystone.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +89,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E01163D56FDE63D59A5CD2A /* Pods_LostArkExchange_LostArkExchangeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LostArkExchange_LostArkExchangeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38853AED90AE48CDD024A144 /* Pods-LostArkExchange-LostArkExchangeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LostArkExchange-LostArkExchangeUITests.debug.xcconfig"; path = "Target Support Files/Pods-LostArkExchange-LostArkExchangeUITests/Pods-LostArkExchange-LostArkExchangeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		656E22D55DEE1EFED0D63E6B /* Pods-LostArkExchange.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LostArkExchange.debug.xcconfig"; path = "Target Support Files/Pods-LostArkExchange/Pods-LostArkExchange.debug.xcconfig"; sourceTree = "<group>"; };
+		6D8D290DED65BD051654D3EA /* Pods-LostArkExchangeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LostArkExchangeTests.release.xcconfig"; path = "Target Support Files/Pods-LostArkExchangeTests/Pods-LostArkExchangeTests.release.xcconfig"; sourceTree = "<group>"; };
+		6EC22DF376013337D73E72FB /* Pods-LostArkExchangeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LostArkExchangeTests.debug.xcconfig"; path = "Target Support Files/Pods-LostArkExchangeTests/Pods-LostArkExchangeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A114930CEF5742BB6AA46DF3 /* Pods_LostArkExchangeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LostArkExchangeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B31ECE1CDB6AB158D074D7 /* Pods-LostArkExchange.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LostArkExchange.release.xcconfig"; path = "Target Support Files/Pods-LostArkExchange/Pods-LostArkExchange.release.xcconfig"; sourceTree = "<group>"; };
+		BA177C5D2976BB7C00988613 /* CharactersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersAPI.swift; sourceTree = "<group>"; };
+		BA177C5F2976BE7D00988613 /* CharacterSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSearchView.swift; sourceTree = "<group>"; };
+		BA177C622976CA2600988613 /* CharacterStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterStatusView.swift; sourceTree = "<group>"; };
+		BA177C642976CB7E00988613 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		BA177C6629772F1600988613 /* CharacterProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProfileAPI.swift; sourceTree = "<group>"; };
+		BA177C68297806FC00988613 /* TextLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLimiter.swift; sourceTree = "<group>"; };
 		BA379DB92965650D00FC1F28 /* LostArkExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LostArkExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA379DBC2965650D00FC1F28 /* LostArkExchangeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkExchangeApp.swift; sourceTree = "<group>"; };
 		BA379DBE2965650D00FC1F28 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -84,7 +130,35 @@
 		BA379E57296C139C00FC1F28 /* EtcOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtcOptionsView.swift; sourceTree = "<group>"; };
 		BA379E59296C144000FC1F28 /* SkillOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillOptionsView.swift; sourceTree = "<group>"; };
 		BA794492296C180800D8B8CA /* ItemSkillOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSkillOptionsView.swift; sourceTree = "<group>"; };
-		BA794496296D623800D8B8CA /* SearcedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearcedItemView.swift; sourceTree = "<group>"; };
+		BA794496296D623800D8B8CA /* SearchedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedItemView.swift; sourceTree = "<group>"; };
+		BA794498296E98C100D8B8CA /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		BA7944A0297000C000D8B8CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BA7944A429701A3F00D8B8CA /* AdmobBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdmobBanner.swift; sourceTree = "<group>"; };
+		BA7944A62970200000D8B8CA /* DisconnectedNetWorkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisconnectedNetWorkView.swift; sourceTree = "<group>"; };
+		BA7944A92970207800D8B8CA /* NetworkReachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
+		BA7944AB297073ED00D8B8CA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../LineageM2Exchange/LineageM2Exchange/AppDelegate.swift; sourceTree = "<group>"; };
+		BA80713729EE42C300964277 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		BA9FEF6D297A767200BC0669 /* EquipmentsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentsAPI.swift; sourceTree = "<group>"; };
+		BA9FEF6F298112A200BC0669 /* CharacterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImageView.swift; sourceTree = "<group>"; };
+		BA9FEF712981AA1B00BC0669 /* HTMLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLView.swift; sourceTree = "<group>"; };
+		BA9FEF742981BE8B00BC0669 /* EngravingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravingsAPI.swift; sourceTree = "<group>"; };
+		BA9FEF762982E43E00BC0669 /* CharacterDetailEquipmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailEquipmentsView.swift; sourceTree = "<group>"; };
+		BA9FEF792982F6BE00BC0669 /* ItemConditionAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConditionAddView.swift; sourceTree = "<group>"; };
+		BA9FEF7C298309EA00BC0669 /* EquipmentDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDescriptionView.swift; sourceTree = "<group>"; };
+		BA9FEF7E29831EDB00BC0669 /* EngravingDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngravingDescriptionView.swift; sourceTree = "<group>"; };
+		BA9FEF8029832BFE00BC0669 /* AccessoriesDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesDescriptionView.swift; sourceTree = "<group>"; };
+		BA9FEF8429833EFD00BC0669 /* BraceletDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraceletDescriptionView.swift; sourceTree = "<group>"; };
+		BA9FEF862983B15800BC0669 /* AbilityStoneDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityStoneDescriptionView.swift; sourceTree = "<group>"; };
+		BAE5819A2A0A2C24009A1567 /* CharacterViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterViewModel .swift"; sourceTree = "<group>"; };
+		BAE5819C2A0A3253009A1567 /* MangnaniMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangnaniMethods.swift; sourceTree = "<group>"; };
+		BAE5819F2A0A3986009A1567 /* CharacterEquipmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEquipmentsView.swift; sourceTree = "<group>"; };
+		BAE581A12A0A3C11009A1567 /* CharacterEngravingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEngravingsView.swift; sourceTree = "<group>"; };
+		BAE581A32A0A3D5B009A1567 /* CharacterAccesoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAccesoriesView.swift; sourceTree = "<group>"; };
+		BAE581A52A0A46D9009A1567 /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		BAE581A72A0A499B009A1567 /* CharacterBraceletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterBraceletsView.swift; sourceTree = "<group>"; };
+		BAE581A92A0A4AED009A1567 /* CharacterAbilitystone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAbilitystone.swift; sourceTree = "<group>"; };
+		E982D3E3763221B5D36A441E /* Pods-LostArkExchange-LostArkExchangeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LostArkExchange-LostArkExchangeUITests.release.xcconfig"; path = "Target Support Files/Pods-LostArkExchange-LostArkExchangeUITests/Pods-LostArkExchange-LostArkExchangeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FD6C7188F1F4FADEA0094545 /* Pods_LostArkExchange.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LostArkExchange.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +170,7 @@
 				BA379E0E2968AC9A00FC1F28 /* RxSwift in Frameworks */,
 				BA379E0C2968AC9A00FC1F28 /* RxRelay in Frameworks */,
 				BA379E0A2968AC9A00FC1F28 /* RxCocoa in Frameworks */,
+				68D1E42E18B567C787C31D65 /* Pods_LostArkExchange.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8621A627CC119920E412C4D7 /* Pods_LostArkExchangeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,21 +186,53 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2306B417386D94ED62B9A6E2 /* Pods_LostArkExchange_LostArkExchangeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9309BDB865A420FFE1CAACED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				656E22D55DEE1EFED0D63E6B /* Pods-LostArkExchange.debug.xcconfig */,
+				B1B31ECE1CDB6AB158D074D7 /* Pods-LostArkExchange.release.xcconfig */,
+				38853AED90AE48CDD024A144 /* Pods-LostArkExchange-LostArkExchangeUITests.debug.xcconfig */,
+				E982D3E3763221B5D36A441E /* Pods-LostArkExchange-LostArkExchangeUITests.release.xcconfig */,
+				6EC22DF376013337D73E72FB /* Pods-LostArkExchangeTests.debug.xcconfig */,
+				6D8D290DED65BD051654D3EA /* Pods-LostArkExchangeTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BA177C612976CA0F00988613 /* CharactersView */ = {
+			isa = PBXGroup;
+			children = (
+				BAE5819E2A0A3882009A1567 /* CharacterItemViews */,
+				BA177C5F2976BE7D00988613 /* CharacterSearchView.swift */,
+				BA177C622976CA2600988613 /* CharacterStatusView.swift */,
+				BA177C642976CB7E00988613 /* CharacterDetailView.swift */,
+				BA9FEF762982E43E00BC0669 /* CharacterDetailEquipmentsView.swift */,
+				BAE5819A2A0A2C24009A1567 /* CharacterViewModel .swift */,
+				BAE581A52A0A46D9009A1567 /* CharacterModel.swift */,
+				BAE5819C2A0A3253009A1567 /* MangnaniMethods.swift */,
+			);
+			path = CharactersView;
+			sourceTree = "<group>";
+		};
 		BA379DB02965650D00FC1F28 = {
 			isa = PBXGroup;
 			children = (
 				BA379DBC2965650D00FC1F28 /* LostArkExchangeApp.swift */,
+				BA7944AB297073ED00D8B8CA /* AppDelegate.swift */,
+				BA80713729EE42C300964277 /* Config.xcconfig */,
 				BA379DBB2965650D00FC1F28 /* LostArkExchange */,
 				BA379DD12965650E00FC1F28 /* LostArkExchangeTests */,
 				BA379DDB2965650E00FC1F28 /* LostArkExchangeUITests */,
 				BA379DBA2965650D00FC1F28 /* Products */,
 				BA379E132968D5EB00FC1F28 /* Frameworks */,
+				9309BDB865A420FFE1CAACED /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,16 +249,18 @@
 		BA379DBB2965650D00FC1F28 /* LostArkExchange */ = {
 			isa = PBXGroup;
 			children = (
+				BA7944A0297000C000D8B8CA /* Info.plist */,
 				BA379DBE2965650D00FC1F28 /* MainView.swift */,
+				BA9FEF6F298112A200BC0669 /* CharacterImageView.swift */,
+				BA177C68297806FC00988613 /* TextLimiter.swift */,
+				BA9FEF7B298309D900BC0669 /* EquipmentDescriptionView */,
+				BA9FEF732981AA2000BC0669 /* HTMLView */,
+				BA7944A329701A3F00D8B8CA /* AdMob */,
 				BA794495296C18B900D8B8CA /* EventView */,
 				BA794494296C188600D8B8CA /* WebView */,
 				BA379DF4296880C800FC1F28 /* SearchView */,
-				BA379E112968D31C00FC1F28 /* ItemSearchView.swift */,
-				BA794496296D623800D8B8CA /* SearcedItemView.swift */,
-				BA379E59296C144000FC1F28 /* SkillOptionsView.swift */,
-				BA794492296C180800D8B8CA /* ItemSkillOptionsView.swift */,
-				BA379E57296C139C00FC1F28 /* EtcOptionsView.swift */,
-				BA379E1A296AC67E00FC1F28 /* ItemEtcOptionsView.swift */,
+				BA7944A82970206E00D8B8CA /* Network */,
+				BA79449A296F028D00D8B8CA /* EtcOptionsView */,
 				BA379DF72968826D00FC1F28 /* AppExtension */,
 				BA379DEB2965672B00FC1F28 /* API */,
 				BA379DC02965650E00FC1F28 /* Assets.xcassets */,
@@ -192,6 +302,10 @@
 				BA379DEC2965675400FC1F28 /* EventAPI.swift */,
 				BA379DF02965A05600FC1F28 /* AuctionItemsAPI.swift */,
 				BA379DF22965CF3500FC1F28 /* AuctionOptionsAPI.swift */,
+				BA177C5D2976BB7C00988613 /* CharactersAPI.swift */,
+				BA177C6629772F1600988613 /* CharacterProfileAPI.swift */,
+				BA9FEF6D297A767200BC0669 /* EquipmentsAPI.swift */,
+				BA9FEF742981BE8B00BC0669 /* EngravingsAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -199,8 +313,8 @@
 		BA379DF4296880C800FC1F28 /* SearchView */ = {
 			isa = PBXGroup;
 			children = (
-				BA379DF5296880DE00FC1F28 /* ItemSearchCategoriesView.swift */,
-				BA379E00296890C100FC1F28 /* CategoriesPickerView.swift */,
+				BA9FEF782982F5B200BC0669 /* ItemSearchView */,
+				BA177C612976CA0F00988613 /* CharactersView */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -209,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				BA379DF82968827B00FC1F28 /* AppExtensions.swift */,
+				BA794498296E98C100D8B8CA /* ColorExtension.swift */,
 			);
 			path = AppExtension;
 			sourceTree = "<group>";
@@ -217,6 +332,9 @@
 			isa = PBXGroup;
 			children = (
 				BA379E142968D5EB00FC1F28 /* WebKit.framework */,
+				FD6C7188F1F4FADEA0094545 /* Pods_LostArkExchange.framework */,
+				2E01163D56FDE63D59A5CD2A /* Pods_LostArkExchange_LostArkExchangeUITests.framework */,
+				A114930CEF5742BB6AA46DF3 /* Pods_LostArkExchangeTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,6 +357,79 @@
 			path = EventView;
 			sourceTree = "<group>";
 		};
+		BA79449A296F028D00D8B8CA /* EtcOptionsView */ = {
+			isa = PBXGroup;
+			children = (
+				BA379E57296C139C00FC1F28 /* EtcOptionsView.swift */,
+				BA379E1A296AC67E00FC1F28 /* ItemEtcOptionsView.swift */,
+			);
+			path = EtcOptionsView;
+			sourceTree = "<group>";
+		};
+		BA7944A329701A3F00D8B8CA /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				BA7944A429701A3F00D8B8CA /* AdmobBanner.swift */,
+			);
+			name = AdMob;
+			path = ../../LineageM2Exchange/LineageM2Exchange/AdMob;
+			sourceTree = "<group>";
+		};
+		BA7944A82970206E00D8B8CA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BA7944A62970200000D8B8CA /* DisconnectedNetWorkView.swift */,
+				BA7944A92970207800D8B8CA /* NetworkReachability.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BA9FEF732981AA2000BC0669 /* HTMLView */ = {
+			isa = PBXGroup;
+			children = (
+				BA9FEF712981AA1B00BC0669 /* HTMLView.swift */,
+			);
+			path = HTMLView;
+			sourceTree = "<group>";
+		};
+		BA9FEF782982F5B200BC0669 /* ItemSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				BA379E00296890C100FC1F28 /* CategoriesPickerView.swift */,
+				BA379DF5296880DE00FC1F28 /* ItemSearchCategoriesView.swift */,
+				BA9FEF792982F6BE00BC0669 /* ItemConditionAddView.swift */,
+				BA794496296D623800D8B8CA /* SearchedItemView.swift */,
+				BA379E59296C144000FC1F28 /* SkillOptionsView.swift */,
+				BA794492296C180800D8B8CA /* ItemSkillOptionsView.swift */,
+				BA379E112968D31C00FC1F28 /* ItemSearchView.swift */,
+			);
+			path = ItemSearchView;
+			sourceTree = "<group>";
+		};
+		BA9FEF7B298309D900BC0669 /* EquipmentDescriptionView */ = {
+			isa = PBXGroup;
+			children = (
+				BA9FEF7C298309EA00BC0669 /* EquipmentDescriptionView.swift */,
+				BA9FEF7E29831EDB00BC0669 /* EngravingDescriptionView.swift */,
+				BA9FEF8029832BFE00BC0669 /* AccessoriesDescriptionView.swift */,
+				BA9FEF8429833EFD00BC0669 /* BraceletDescriptionView.swift */,
+				BA9FEF862983B15800BC0669 /* AbilityStoneDescriptionView.swift */,
+			);
+			path = EquipmentDescriptionView;
+			sourceTree = "<group>";
+		};
+		BAE5819E2A0A3882009A1567 /* CharacterItemViews */ = {
+			isa = PBXGroup;
+			children = (
+				BAE5819F2A0A3986009A1567 /* CharacterEquipmentsView.swift */,
+				BAE581A12A0A3C11009A1567 /* CharacterEngravingsView.swift */,
+				BAE581A32A0A3D5B009A1567 /* CharacterAccesoriesView.swift */,
+				BAE581A72A0A499B009A1567 /* CharacterBraceletsView.swift */,
+				BAE581A92A0A4AED009A1567 /* CharacterAbilitystone.swift */,
+			);
+			path = CharacterItemViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -246,9 +437,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA379DE22965650E00FC1F28 /* Build configuration list for PBXNativeTarget "LostArkExchange" */;
 			buildPhases = (
+				E9D326FE7FF66DECC399ABFE /* [CP] Check Pods Manifest.lock */,
 				BA379DB52965650D00FC1F28 /* Sources */,
 				BA379DB62965650D00FC1F28 /* Frameworks */,
 				BA379DB72965650D00FC1F28 /* Resources */,
+				2B1B0CC64D3778CB0E180377 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -268,6 +461,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA379DE52965650E00FC1F28 /* Build configuration list for PBXNativeTarget "LostArkExchangeTests" */;
 			buildPhases = (
+				ECC4D58D297378353FA38BF7 /* [CP] Check Pods Manifest.lock */,
 				BA379DCA2965650E00FC1F28 /* Sources */,
 				BA379DCB2965650E00FC1F28 /* Frameworks */,
 				BA379DCC2965650E00FC1F28 /* Resources */,
@@ -286,9 +480,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA379DE82965650E00FC1F28 /* Build configuration list for PBXNativeTarget "LostArkExchangeUITests" */;
 			buildPhases = (
+				42D1A4EF064B5BB8E3D5E7DA /* [CP] Check Pods Manifest.lock */,
 				BA379DD42965650E00FC1F28 /* Sources */,
 				BA379DD52965650E00FC1F28 /* Frameworks */,
 				BA379DD62965650E00FC1F28 /* Resources */,
+				C96E6C6D9D046318F7B43F06 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -324,7 +520,7 @@
 				};
 			};
 			buildConfigurationList = BA379DB42965650D00FC1F28 /* Build configuration list for PBXProject "LostArkExchange" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -372,31 +568,164 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2B1B0CC64D3778CB0E180377 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LostArkExchange/Pods-LostArkExchange-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LostArkExchange/Pods-LostArkExchange-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LostArkExchange/Pods-LostArkExchange-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		42D1A4EF064B5BB8E3D5E7DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LostArkExchange-LostArkExchangeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C96E6C6D9D046318F7B43F06 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LostArkExchange-LostArkExchangeUITests/Pods-LostArkExchange-LostArkExchangeUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LostArkExchange-LostArkExchangeUITests/Pods-LostArkExchange-LostArkExchangeUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LostArkExchange-LostArkExchangeUITests/Pods-LostArkExchange-LostArkExchangeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9D326FE7FF66DECC399ABFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LostArkExchange-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECC4D58D297378353FA38BF7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LostArkExchangeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BA379DB52965650D00FC1F28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BA379DED2965675400FC1F28 /* EventAPI.swift in Sources */,
-				BA794497296D623800D8B8CA /* SearcedItemView.swift in Sources */,
+				BA794497296D623800D8B8CA /* SearchedItemView.swift in Sources */,
 				BA379E01296890C100FC1F28 /* CategoriesPickerView.swift in Sources */,
 				BA379E122968D31C00FC1F28 /* ItemSearchView.swift in Sources */,
 				BA379DF12965A05600FC1F28 /* AuctionItemsAPI.swift in Sources */,
 				BA379DC62965650E00FC1F28 /* Persistence.swift in Sources */,
+				BA177C5E2976BB7C00988613 /* CharactersAPI.swift in Sources */,
+				BA7944A72970200000D8B8CA /* DisconnectedNetWorkView.swift in Sources */,
+				BA177C652976CB7E00988613 /* CharacterDetailView.swift in Sources */,
+				BA177C69297806FC00988613 /* TextLimiter.swift in Sources */,
+				BAE581AA2A0A4AED009A1567 /* CharacterAbilitystone.swift in Sources */,
+				BA9FEF872983B15800BC0669 /* AbilityStoneDescriptionView.swift in Sources */,
 				BA379DF32965CF3500FC1F28 /* AuctionOptionsAPI.swift in Sources */,
+				BAE581A22A0A3C11009A1567 /* CharacterEngravingsView.swift in Sources */,
+				BA9FEF7A2982F6BE00BC0669 /* ItemConditionAddView.swift in Sources */,
+				BA9FEF8129832BFE00BC0669 /* AccessoriesDescriptionView.swift in Sources */,
 				BA379DBF2965650D00FC1F28 /* MainView.swift in Sources */,
 				BA379E5A296C144000FC1F28 /* SkillOptionsView.swift in Sources */,
+				BA177C602976BE7D00988613 /* CharacterSearchView.swift in Sources */,
 				BA379E1B296AC67E00FC1F28 /* ItemEtcOptionsView.swift in Sources */,
+				BA9FEF70298112A200BC0669 /* CharacterImageView.swift in Sources */,
 				BA379DF92968827B00FC1F28 /* AppExtensions.swift in Sources */,
 				BA379DEF29656F3F00FC1F28 /* EventView.swift in Sources */,
+				BA7944AC297073ED00D8B8CA /* AppDelegate.swift in Sources */,
+				BA794499296E98C100D8B8CA /* ColorExtension.swift in Sources */,
+				BA9FEF772982E43E00BC0669 /* CharacterDetailEquipmentsView.swift in Sources */,
+				BA9FEF752981BE8B00BC0669 /* EngravingsAPI.swift in Sources */,
+				BAE5819D2A0A3253009A1567 /* MangnaniMethods.swift in Sources */,
+				BA9FEF6E297A767200BC0669 /* EquipmentsAPI.swift in Sources */,
 				BA379DF6296880DE00FC1F28 /* ItemSearchCategoriesView.swift in Sources */,
 				BA379E192968D70F00FC1F28 /* WebViewViewModel.swift in Sources */,
+				BA177C6729772F1600988613 /* CharacterProfileAPI.swift in Sources */,
+				BA7944A529701A3F00D8B8CA /* AdmobBanner.swift in Sources */,
+				BA9FEF7D298309EA00BC0669 /* EquipmentDescriptionView.swift in Sources */,
 				BA379DBD2965650D00FC1F28 /* LostArkExchangeApp.swift in Sources */,
 				BA379E102968D21C00FC1F28 /* LoaEventsView.swift in Sources */,
+				BA9FEF8529833EFD00BC0669 /* BraceletDescriptionView.swift in Sources */,
+				BA9FEF722981AA1B00BC0669 /* HTMLView.swift in Sources */,
+				BAE5819B2A0A2C24009A1567 /* CharacterViewModel .swift in Sources */,
 				BA379DC92965650E00FC1F28 /* LostArkExchange.xcdatamodeld in Sources */,
+				BA9FEF7F29831EDB00BC0669 /* EngravingDescriptionView.swift in Sources */,
 				BA379E58296C139C00FC1F28 /* EtcOptionsView.swift in Sources */,
+				BA177C632976CA2600988613 /* CharacterStatusView.swift in Sources */,
 				BA379E172968D69000FC1F28 /* WebView.swift in Sources */,
 				BA794493296C180800D8B8CA /* ItemSkillOptionsView.swift in Sources */,
+				BAE581A02A0A3986009A1567 /* CharacterEquipmentsView.swift in Sources */,
+				BAE581A62A0A46D9009A1567 /* CharacterModel.swift in Sources */,
+				BA7944AA2970207800D8B8CA /* NetworkReachability.swift in Sources */,
+				BAE581A42A0A3D5B009A1567 /* CharacterAccesoriesView.swift in Sources */,
+				BAE581A82A0A499B009A1567 /* CharacterBraceletsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +764,7 @@
 /* Begin XCBuildConfiguration section */
 		BA379DE02965650E00FC1F28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA80713729EE42C300964277 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -483,7 +813,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -495,6 +825,7 @@
 		};
 		BA379DE12965650E00FC1F28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA80713729EE42C300964277 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -537,7 +868,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -549,6 +880,7 @@
 		};
 		BA379DE32965650E00FC1F28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 656E22D55DEE1EFED0D63E6B /* Pods-LostArkExchange.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -558,27 +890,35 @@
 				DEVELOPMENT_TEAM = VYAAXRZFXH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LostArkExchange/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "로스트아크 아이템 검색";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.badger.LostArkExchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		BA379DE42965650E00FC1F28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1B31ECE1CDB6AB158D074D7 /* Pods-LostArkExchange.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -588,27 +928,35 @@
 				DEVELOPMENT_TEAM = VYAAXRZFXH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LostArkExchange/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "로스트아크 아이템 검색";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.badger.LostArkExchange;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		BA379DE62965650E00FC1F28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EC22DF376013337D73E72FB /* Pods-LostArkExchangeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -629,6 +977,7 @@
 		};
 		BA379DE72965650E00FC1F28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D8D290DED65BD051654D3EA /* Pods-LostArkExchangeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -649,6 +998,7 @@
 		};
 		BA379DE92965650E00FC1F28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38853AED90AE48CDD024A144 /* Pods-LostArkExchange-LostArkExchangeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -667,6 +1017,7 @@
 		};
 		BA379DEA2965650E00FC1F28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E982D3E3763221B5D36A441E /* Pods-LostArkExchange-LostArkExchangeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

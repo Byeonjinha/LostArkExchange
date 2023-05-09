@@ -14,36 +14,15 @@ class AuctionItemsAPI: ObservableObject {
         
     }
     
-    private let auth = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyIsImtpZCI6IktYMk40TkRDSTJ5NTA5NWpjTWk5TllqY2lyZyJ9.eyJpc3MiOiJodHRwczovL2x1ZHkuZ2FtZS5vbnN0b3ZlLmNvbSIsImF1ZCI6Imh0dHBzOi8vbHVkeS5nYW1lLm9uc3RvdmUuY29tL3Jlc291cmNlcyIsImNsaWVudF9pZCI6IjEwMDAwMDAwMDAwNDYyMTgifQ.n6mPSL66p5GpwUx2wFtK_J0at50vXqRgp-J2aX0bOjWI6wzfwortAeLXmjPG0dMEpCZrpKLe3uKmLpgR4ExYVkjOZSst_Qa6JpiT7PYvnS007UK2W5IlarkDr07BFldsPOdIJ7knyrxPNasgbQPDTmyRA2u_SRJCJi8FzTaIiRcARl-_tWThiC5luaAYgg1hCPo32fCQEmJDszcRfp7xrlVmfVxWbotISL2ASW96D0ttO1p74DIkDkiJHHx9Xbk82R6CRepwvg0OCzqswET1Td_5Z0rcwjm5tKXIDHj3kNGBFA1qIN_fo1JMm5vO58uy5rVPIk3IAw1RTGK30QJLzg"
-    func getMyIP(itemName: String, itemGrade: String, categoryCode: Int, itemGradeQuality: String, itemTier: Int, etcOptions: String, skillOptions: String) {
+    private let auth = Bundle.main.infoDictionary?["Auth"] as? String
+    func getMyIP(parameter: String) {
         let url = URL(string: "https://developer-lostark.game.onstove.com/auctions/items")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let parameters: String =
-        """
-        {
-          "ItemLevelMin": 0,
-          "ItemLevelMax": 1700,
-        \(itemGradeQuality)
-          "SKillOptions": [
-            \(skillOptions)
-          ],
-          "EtcOptions": [
-            \(etcOptions)
-          ],
-          "Sort": "BIDSTART_PRICE",
-          "CategoryCode": \(categoryCode),
-          "CharacterClass": "",
-          "ItemTier": \(itemTier),
-          "ItemGrade": "\(itemGrade)",
-          "ItemName": "\(itemName)",
-          "PageNo": 0,
-          "SortCondition": "ASC"
-        }
-        """
+        let parameters: String = parameter
         let data = parameters.data(using: .utf8)
         request.httpBody = data
-        let header = ["Authorization" : "Bearer " + auth ,
+        let header = ["Authorization" : "Bearer " + auth! ,
                       "Content-Type" : "application/json; charset=utf-8",
                       "'accept'" :  "'application/json'"
         ]

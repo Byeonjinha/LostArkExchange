@@ -5,13 +5,15 @@
 //  Created by Byeon jinha on 2023/01/04.
 //
 
+import AdSupport
+import AppTrackingTransparency
 import CoreData
+import GoogleMobileAds
 import SafariServices
 import SwiftUI
 import WebKit
 
 struct MainView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     
     @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
     @StateObject private var searchItemByCondition = AuctionItemsAPI.shared
@@ -25,31 +27,50 @@ struct MainView: View {
     
     @State var searchItemName: String = ""
     @State var urlData: URLData!
+    @State var searchItemConditions: SearchItemConditions!
+    
+    
+    @State var searchCharacterName: String = ""
     
     @ObservedObject var viewModel = WebViewModel()
-    var noticeURL: String = "https://lostark.game.onstove.com/News/Notice/List"
+    
+    private var noticeURL: String = "https://lostark.game.onstove.com/News/Notice/List"
+    
     var body: some View {
-        Color.black
+        Color.white
             .overlay(
-                TabView {
-                    ItemSearchView(searchItemName: $searchItemName, selectionCategoriesOption: $selectionCategoriesOption, selectionGradesOption: $selectionGradesOption, selectionGradeQualitiesOption: $selectionGradeQualitiesOption, selectionTiersOption: $selectionTiersOption, isSearchItemPresented: $isSearchItemPresented)
+                VStack{
+                    TabView {
+                        ItemSearchView(
+                            searchItemName: $searchItemName,
+                            selectionCategoriesOption: $selectionCategoriesOption,
+                            selectionGradesOption: $selectionGradesOption,
+                            selectionGradeQualitiesOption: $selectionGradeQualitiesOption,
+                            selectionTiersOption: $selectionTiersOption,
+                            searchItemConditions: $searchItemConditions)
                         .tabItem {
-                            Image(systemName: "house")
+                            Image(systemName: "magnifyingglass")
                             Text("아이템 검색")
                         }
-                    LoaEventsView(urlData: $urlData)
-                        .tabItem {
-                            Image(systemName: "person")
-                            Text("이벤트")
-                        }
-                    let webView = MyWebView(urlToLoad: noticeURL)
-                   webView
-                        .tabItem {
-                            Image(systemName: "bag")
-                            Text("공지사항")
-                        }
-                        .onTapGesture {
-                        }
+                        CharacterSearchView(searchCharacter: $searchCharacterName)
+                            .tabItem {
+                                Image(systemName: "person.fill")
+                                Text("캐릭터 검색")
+                            }
+                        LoaEventsView(urlData: $urlData)
+                            .tabItem {
+                                Image(systemName: "calendar")
+                                Text("이벤트")
+                            }
+                        let webView = MyWebView(urlToLoad: noticeURL)
+                        webView
+                            .tabItem {
+                                Image(systemName: "doc.plaintext")
+                                Text("공지사항")
+                            }
+                    }
+                    GADBannerViewController()
+                        .frame(width: GADAdSizeBanner.size.width, height: GADAdSizeBanner.size.height)
                 }
             )
     }
@@ -78,3 +99,4 @@ struct ItemData : Identifiable {
     var id = UUID()
     var itemData : SearchItems
 }
+

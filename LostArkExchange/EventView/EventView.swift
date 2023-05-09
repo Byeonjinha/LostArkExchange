@@ -19,12 +19,16 @@ struct EventView: View {
                     image.ImageModifier()
                 } else if phash.error != nil {
                     Image(systemName: "exclamationmark.icloud.fill").IconModifier().foregroundColor(.red)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: w * 0.3)
                 } else {
                     Image(systemName: "photo.circle.fill").IconModifier().foregroundColor(.clear)
+                        .multilineTextAlignment(.leading)
+                        .frame(width: w * 0.3)
                 }
             }
             .multilineTextAlignment(.leading)
-            .frame(width: UIScreen.main.bounds.width * 0.3)
+            .frame(width: w * 0.3)
             
             Text(title)
         }

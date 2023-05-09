@@ -18,10 +18,12 @@ struct EtcOptionsView: View {
                 
             })  {
                 Rectangle()
-                    .frame(width: UIScreen.main.bounds.width*0.05)
+                    .frame(width: w*0.05)
                     .foregroundColor(.clear)
                     .overlay(
                         Image(systemName: "plus")
+                            .foregroundColor(.blue)
+
                     )
             }
         }

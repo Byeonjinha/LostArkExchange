@@ -21,8 +21,16 @@ struct ItemSearchCategoriesView: View {
             let itemGrades: [String] = searchAuctionOptions.itemGrades!
             let itemGradeQualities: [Int] = searchAuctionOptions.itemGradeQualities!
             let itemTiers: [Int] = searchAuctionOptions.itemTiers!
-            
+            Color.defaultBlue
+                .cornerRadius(5)
+                .frame(width: w*0.8, height: h*0.3 )
+                .overlay(
             CategoriesPickerView(choicedCategorie: $choicedCategorie, choicedGrade: $choicedGrade, itemGradeQuality: $itemGradeQuality, itemTier: $itemTier, categories: categories, itemGrades: itemGrades, itemGradeQualities: itemGradeQualities, itemTiers: itemTiers)
+            )
+        } else {
+            Color.defaultBlue
+                .cornerRadius(5)
+                .frame(width: w*0.8, height: h*0.3 )
         }
     }
 }

@@ -19,7 +19,9 @@ struct MyWebView: UIViewRepresentable {
             return WKWebView()
         }
         //웹뷰 인스턴스 생성
-        let webView = WKWebView()
+        let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.applicationNameForUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.1.1 Safari/603.2.4"
+        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
         
         //웹뷰를 로드한다
         webView.load(URLRequest(url: url))
