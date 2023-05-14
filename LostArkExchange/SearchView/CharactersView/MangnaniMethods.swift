@@ -7,211 +7,90 @@
 
 import Foundation
 
-func findEquipments(equipmentsDatas: Equipments) -> [[String]] {
-    guard let equipmentDatas = equipmentsDatas else {
+func findEquipments(itemDatas: Equipments, itemArray: [String], itemType: Item) -> [[String]] {
+    guard let itemDatas = itemDatas else {
         return []
     }
     var returnEquipmentsData: [[String]] = []
-    for equipmentData in equipmentDatas {
-        var componentEquipmentsData: [String] = [equipmentData?.type ?? ""]
-        componentEquipmentsData.append(equipmentData?.name ?? "")
-        componentEquipmentsData.append(equipmentData?.icon ?? "")
-        componentEquipmentsData.append(equipmentData?.grade ?? "")
-        let parsedItemData = parseEquipmentsJSONString(jsonString: equipmentData?.tooltip) ?? []
-        for item in parsedItemData{
-            componentEquipmentsData.append(item)
-        }
-        returnEquipmentsData.append(componentEquipmentsData)
-    }
-    return returnEquipmentsData
-}
-
-func findAccessories(equipmentsDatas: Equipments, accessoriesArray: [String] ) -> [[String]] {
-    guard let equipmentsDatas = equipmentsDatas else {
-        return []
-    }
-    var returnEquipmentsData: [[String]] = []
-    for idx in equipmentsDatas {
-        if accessoriesArray.contains(idx?.type ?? "") {
-            var componentEquipmentsData: [String] = [idx?.type ?? ""]
-            componentEquipmentsData.append(idx?.name ?? "")
-            componentEquipmentsData.append(idx?.icon ?? "")
-            componentEquipmentsData.append(idx?.grade ?? "")
-            var parsedItemData = parseAccessoriesJSONString(jsonString: idx?.tooltip) ?? []
-            if parsedItemData.isEmpty {
-                parsedItemData = parseAccessoriesJSONString2(jsonString: idx?.tooltip) ?? []
+    for itemData in itemDatas {
+        if itemArray.contains(itemData?.type ?? "") {
+            var componentEquipmentsData: [String] = [itemData?.type ?? ""]
+            componentEquipmentsData.append(itemData?.icon ?? "")
+            var parsedItemData = [String?]()
+            switch itemType {
+            case .equipment:
+                parsedItemData = parseEquipmentsJSONString(jsonString: itemData?.tooltip)
+            case .accessory:
+                parsedItemData = parseAccessoriesJSONString(jsonString: itemData?.tooltip) ?? []
+                if parsedItemData.isEmpty {
+                    parsedItemData = parseAccessoriesJSONString2(jsonString: itemData?.tooltip) ?? []
+                }
+                if parsedItemData.isEmpty {
+                    parsedItemData = parseAccessoriesJSONString3(jsonString: itemData?.tooltip) ?? []
+                }
+            case .abilitystone:
+                parsedItemData = parseAbilityStoneJSONString1(jsonString: itemData?.tooltip) ?? []
+                if parsedItemData.isEmpty {
+                    parsedItemData = parseAbilityStoneJSONString2(jsonString: itemData?.tooltip) ?? []
+                }
+            case .bracelet:
+                parsedItemData = parseBraceletJSONString(jsonString: itemData?.tooltip) ?? []
+            case .engraving:
+                parsedItemData = parseEngravingJSONString(jsonString: itemData?.tooltip) ?? []
             }
-            if parsedItemData.isEmpty {
-                parsedItemData = parseAccessoriesJSONString3(jsonString: idx?.tooltip) ?? []
-            }
-            for item in parsedItemData{
-                componentEquipmentsData.append(item)
+            
+            for item in parsedItemData {
+                if let unwrappedItem = item {
+                    componentEquipmentsData.append(unwrappedItem)
+                }
             }
             returnEquipmentsData.append(componentEquipmentsData)
         }
     }
+    print(returnEquipmentsData)
     return returnEquipmentsData
 }
-
-func findAbilityStone(equipmentsDatas: Equipments, abilitystoneArray: [String] ) -> [[String]] {
-    guard let equipmentsDatas = equipmentsDatas  else {
-        return []
-    }
-    var returnEquipmentsData: [[String]] = []
-    for idx in equipmentsDatas {
-        if abilitystoneArray.contains(idx?.type ?? "") {
-            
-            var componentEquipmentsData: [String] = [idx?.type ?? ""]
-            componentEquipmentsData.append(idx?.name ?? "")
-            componentEquipmentsData.append(idx?.icon ?? "")
-            componentEquipmentsData.append(idx?.grade ?? "")
-            var parsedItemData = parseAbilityStoneJSONString1(jsonString: idx?.tooltip) ?? []
-            if parsedItemData.isEmpty {
-                parsedItemData = parseAbilityStoneJSONString2(jsonString: idx?.tooltip) ?? []
-            }
-            for item in parsedItemData{
-                componentEquipmentsData.append(item)
-            }
-            returnEquipmentsData.append(componentEquipmentsData)
-        }
-    }
-    return returnEquipmentsData
-}
-func findBracelet(equipmentsData: Equipments?, braceletArray: [String]) -> [[String]] {
-    guard let equipmentsData = equipmentsData, equipmentsData != nil else {
-        return []
-    }
-    var returnEquipmentsData: [[String]] = []
-    for idx in equipmentsData! {
-        if braceletArray.contains(idx?.type ?? "") {
-            
-            var componentEquipmentsData: [String] = [idx?.type ?? ""]
-            componentEquipmentsData.append(idx?.name ?? "")
-            componentEquipmentsData.append(idx?.icon ?? "")
-            componentEquipmentsData.append(idx?.grade ?? "")
-            let parsedItemData = parseBraceletJSONString(jsonString: idx?.tooltip) ?? []
-            
-            for item in parsedItemData{
-                componentEquipmentsData.append(item)
-            }
-            returnEquipmentsData.append(componentEquipmentsData)
-        }
-    }
-    return returnEquipmentsData
-}
-
-func findEngravings(engravingsData: EngravingDatas? ) -> [[String]] {
-    guard let engravingsData = engravingsData, engravingsData != nil else {
-        return []
-    }
-    var returnEngravingsData: [[String]] = []
-    
-    for idx in engravingsData.engravings {
-        var engravingData: [String] = []
-        engravingData.append(idx?.name ?? "")
-        engravingData.append(idx?.icon ?? "")
-        let parsedItemData = parseEngravingJSONString(jsonString: idx?.tooltip) ?? []
-        for item in parsedItemData{
-            engravingData.append(item)
-        }
-        returnEngravingsData.append(engravingData)
-    }
-    return returnEngravingsData
-}
-
-func parseEquipmentsJSONString(jsonString : String?) -> [String]? {
-    var parsedData = [String]()
-    let fontText = "FONT COLOR="
-    
-    var weaponseColor = ""
-    
-    guard let data = (jsonString ?? "").data(using: .utf8) else {
-        return nil
-    }
+func parseEquipmentsJSONString(jsonString: String?) -> [String?] {
+    guard let data = jsonString?.data(using: .utf8) else { return [] }
     
     do {
-        guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] else {
-            return parsedData
-        }
+        guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return [] }
         
-        guard let itemsObject000 = json["Element_000"] as? [String: AnyObject] else {
-            return parsedData
-        }
+        let itemsObject000: [String: Any]? = json["Element_000"] as? [String: Any]
+        let weaponse:String? = itemsObject000?["value"] as? String
         
-        guard let itemsObject001 = json["Element_001"] as? [String: AnyObject] else {
-            return parsedData
-        }
+        let itemsObject001: [String: Any]? = json["Element_001"] as? [String: Any]
+        let items001Value: [String:Any]? = itemsObject001?["value"] as? [String:Any]
+        let qualityValue: Int? = items001Value?["qualityValue"] as? Int
+        let strQualityValue = String(qualityValue ?? 0)
         
-        guard let itemsObject005 = json["Element_005"] as? [String: AnyObject] else {
-            return parsedData
-        }
+        let itemsObject005: [String: Any]? = json["Element_005"] as? [String: Any]
+        let items005Value: [String:Any]? = itemsObject005?["value"] as? [String:Any]
+        let basicText: String?  = items005Value?["Element_000"] as? String
+        let basicStat: String?  = items005Value?["Element_001"] as? String
         
-        guard let itemsObject006 = json["Element_006"] as? [String: AnyObject] else {
-            return parsedData
-        }
-        guard let items000Value = itemsObject000["value"] as? String else {
-            return parsedData
-        }
-        if let rangeS = items000Value.range(of: fontText) {
-            let weaponseIndex = items000Value.distance(from: items000Value.startIndex, to: rangeS.lowerBound) + fontText.count
-            weaponseColor = items000Value.substring(from: weaponseIndex+1, to: weaponseIndex + 7)
-        }
+        let itemsObject006: [String: Any]? = json["Element_006"] as? [String: Any]
+        let items006Value: [String:Any]? = itemsObject006?["value"] as? [String:Any]
+        let optionalText: String?  = items006Value?["Element_000"] as? String
+        let optionalStat: String?  = items006Value?["Element_001"] as? String
         
+        let parsedData: [String?] = [weaponse, strQualityValue, basicText, basicStat, optionalText, optionalStat]
+        return parsedData
         
-        guard let items001Value = itemsObject001["value"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        
-        guard let items005Value = itemsObject005["value"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        
-        guard let items006Value = itemsObject006["value"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        // 무기, 장갑, 하의, 상의, 견갑, 투구
-        guard let basicText = items005Value["Element_000"] as? String else {
-            return parsedData
-        }
-        
-        guard let basicStat = items005Value["Element_001"] as? String else {
-            return parsedData
-        }
-        
-        guard let optionalText = items006Value["Element_000"] as? String else {
-            return parsedData
-        }
-        
-        guard let optionalStat = items006Value["Element_001"] as? String else {
-            return parsedData
-        }
-        
-        guard let itemquality = items001Value["qualityValue"] as? Int  else {
-            return parsedData
-        }
-        
-        let needData = [weaponseColor, optionalText, optionalStat, basicText, basicStat, String(itemquality)]
-        for data in needData {
-            parsedData.append(data)
-        }
     } catch {
         print("JSON 파싱 에러")
+        return []
     }
-    
-    return parsedData
 }
 
 func parseAccessoriesJSONString(jsonString : String?) -> [String]? {
     
     var parsedData = [String]()
     let fontText = "FONT COLOR="
-    
     var weaponseColor = ""
-    
     guard let data = (jsonString ?? "").data(using: .utf8) else {
         return nil
     }
-    
     do {
         guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] else {
             return parsedData
@@ -315,9 +194,7 @@ func parseAccessoriesJSONString(jsonString : String?) -> [String]? {
 func parseAccessoriesJSONString2(jsonString : String?) -> [String]? {
     var parsedData = [String]()
     let fontText = "FONT COLOR="
-    
     var weaponseColor = ""
-    
     guard let data = (jsonString ?? "").data(using: .utf8) else {
         return nil
     }
@@ -728,11 +605,9 @@ func parseBraceletJSONString(jsonString : String?) -> [String]? {
     var parsedData = [String]()
     let fontText = "FONT COLOR="
     var weaponseColor = ""
-    
     guard let data = (jsonString ?? "").data(using: .utf8) else {
         return nil
     }
-    
     do {
         guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] else {
             return parsedData
@@ -792,11 +667,9 @@ func parseEngravingJSONString(jsonString : String?) -> [String]? {
     let engravingStartText = "각인 활성 포인트 "
     var engravingLevel = ""
     var weaponseColor = ""
-    
     guard let data = (jsonString ?? "").data(using: .utf8) else {
         return nil
     }
-    
     do {
         guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] else {
             return parsedData

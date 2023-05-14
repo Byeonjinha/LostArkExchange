@@ -34,6 +34,8 @@ struct HTMLView: UIViewRepresentable {
             {
                 uiView.isEditable = false
                 uiView.attributedText = attributedString
+                uiView.textAlignment = .center
+                uiView.alignmentRectInsets
             }
         }
     }
@@ -42,6 +44,7 @@ struct HTMLView: UIViewRepresentable {
         let uiTextView = UITextView()
         uiTextView.backgroundColor = .clear
         uiTextView.isScrollEnabled = isScrollEnabled
+        uiTextView.frame = CGRect(x: 0, y: 0, width: w * 0.1, height: h * 0.001)
         return uiTextView
     }
 }

@@ -15,11 +15,11 @@ struct CharacterDetailEquipmentsView: View {
     
     var body: some View {
         if let searchCharacterEqupments = searchCharacterEqupments.posts?[characterName]{
-            let findEquipmentElements: [[String]] = findEquipments(equipmentsDatas: searchCharacterEqupments)
-            let findAccessoriesElements: [[String]] = findAccessories(equipmentsDatas: searchCharacterEqupments, accessoriesArray: vm.accessoriesArray)
-            let findAbilitystoneElements: [[String]] = findAbilityStone(equipmentsDatas: searchCharacterEqupments, abilitystoneArray: vm.abilitystoneArray)
-            let findBraceletElements: [[String]] = findBracelet(equipmentsDatas: searchCharacterEqupments, braceletArray: vm.braceletArray)
-            let findEngravingsElements: [[String]] = findEngravings(engravingsData: searchCharacterEngraings.posts![characterName])
+            let findEquipmentElements: [[String]] = findEquipments(itemDatas: searchCharacterEqupments, itemArray: vm.equipmentsArray, itemType: Item.equipment)
+            let findAccessoriesElements: [[String]] = findEquipments(itemDatas: searchCharacterEqupments, itemArray: vm.accessoriesArray, itemType: Item.accessory)
+            let findAbilitystoneElements: [[String]] = findEquipments(itemDatas: searchCharacterEqupments, itemArray: vm.abilitystoneArray, itemType: Item.abilitystone)
+            let findBraceletElements: [[String]] = findEquipments(itemDatas: searchCharacterEqupments, itemArray: vm.braceletArray, itemType: Item.bracelet)
+            let findEngravingsElements: [[String]] = findEquipments(itemDatas: searchCharacterEqupments, itemArray: vm.engravingArray, itemType: Item.engraving)
         
         if vm.isEquipmentsViewStatus == 0 {
             HStack {
@@ -36,18 +36,18 @@ struct CharacterDetailEquipmentsView: View {
                 Spacer()
                 
                 VStack(alignment: .leading) {
-                    CharacterAccesoriesView(findAccessoriesElements: findAccessoriesElements,
-                                            accessoriesArray: vm.accessoriesArray,
-                                            isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
-                                            accessories: $vm.accessories)
-                    CharacterBraceletsView(findBraceletElements: findBraceletElements,
-                                           braceletArray: vm.braceletArray,
-                                           isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
-                                           bracelet: $vm.bracelet)
-                    CharacterAbilitystone(findAbilitystoneElements: findAbilitystoneElements,
-                                          abilitystoneArray: vm.abilitystoneArray,
-                                          isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
-                                          abilitystone: $vm.abilitystone)
+//                    CharacterAccesoriesView(findAccessoriesElements: findAccessoriesElements,
+//                                            accessoriesArray: vm.accessoriesArray,
+//                                            isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
+//                                            accessories: $vm.accessories)
+//                    CharacterBraceletsView(findBraceletElements: findBraceletElements,
+//                                           braceletArray: vm.braceletArray,
+//                                           isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
+//                                           bracelet: $vm.bracelet)
+//                    CharacterAbilitystone(findAbilitystoneElements: findAbilitystoneElements,
+//                                          abilitystoneArray: vm.abilitystoneArray,
+//                                          isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
+//                                          abilitystone: $vm.abilitystone)
                 }
                 Spacer()
             }

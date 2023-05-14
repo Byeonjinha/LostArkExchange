@@ -12,18 +12,17 @@ struct CharacterEquipmentsView: View {
     var equipmentsArray: [String]
     @Binding var isEquipmentsViewStatus: Int
     @Binding var equipment: EquipmentViewData
-    
+//    [weaponse, strQualityValue, basicText, basicStat, optionalText, optionalStat]
     var body: some View {
         ForEach(findEquipmentElements.indices, id: \.self) {equipmentIdx in
             if equipmentsArray.contains(findEquipmentElements[equipmentIdx][0]) {
-                let equipmentName = findEquipmentElements[equipmentIdx][1]
-                let equipmentImage =  findEquipmentElements[equipmentIdx][2]
-                let equipmentColor =  findEquipmentElements[equipmentIdx][4]
-                let equipmentOptionText =  findEquipmentElements[equipmentIdx][5]
-                let equipmentOptionStat =  findEquipmentElements[equipmentIdx][6]
-                let equipmentBasicText =  findEquipmentElements[equipmentIdx][7]
-                let equipmentBasicStat =  findEquipmentElements[equipmentIdx][8]
-                let equipmentQuality =  findEquipmentElements[equipmentIdx][9]
+                let equipmentImage =  findEquipmentElements[equipmentIdx][1]
+                let equipmentName = findEquipmentElements[equipmentIdx][2]
+                let equipmentQuality = findEquipmentElements[equipmentIdx][3]
+                let equipmentBasicText =  findEquipmentElements[equipmentIdx][4]
+                let equipmentBasicStat =  findEquipmentElements[equipmentIdx][5]
+                let equipmentOptionText =  findEquipmentElements[equipmentIdx][6]
+                let equipmentOptionStat =  findEquipmentElements[equipmentIdx][7]
                 let qualityColor = findItemQualityColor(quaility: Int(equipmentQuality) ?? 0)
 
                 HStack {
@@ -33,21 +32,19 @@ struct CharacterEquipmentsView: View {
                         } else if phash.error != nil {
                             Image(systemName: "exclamationmark.icloud.fill").IconModifier().foregroundColor(.red)
                                 .multilineTextAlignment(.leading)
-                                .frame(width: w * 0.05)
+                                .frame(height: h * 0.02)
                         } else {
                             Image(systemName: "photo.circle.fill").IconModifier().foregroundColor(.clear)
                                 .multilineTextAlignment(.leading)
-                                .frame(width: w * 0.05)
+                                .frame(height: h * 0.02)
                         }
                     }
                     .multilineTextAlignment(.leading)
-                    .frame(width: w * 0.05)
-                    HStack {
-                        Text("\(equipmentName)")
-                            .foregroundColor(Color(hex: equipmentColor))
-                        Text("[\(equipmentQuality)]")
-                            .foregroundColor(qualityColor)
-                    }
+                    .frame(height: h * 0.02)
+                    HTMLView(html: equipmentName, isScrollEnabled: false)
+                        .frame(height: h * 0.001)
+                    Text("[\(equipmentQuality)]")
+                        .foregroundColor(qualityColor)
                 }.onTapGesture(perform: {
                     self.isEquipmentsViewStatus = 1
                     self.equipment.name = equipmentName
@@ -57,7 +54,6 @@ struct CharacterEquipmentsView: View {
                     self.equipment.optionStat = equipmentOptionStat
                     self.equipment.basicText = equipmentBasicText
                     self.equipment.optionText = equipmentOptionText
-                    self.equipment.color = equipmentColor
                     self.equipment.qualityColor = qualityColor
                 })
                 

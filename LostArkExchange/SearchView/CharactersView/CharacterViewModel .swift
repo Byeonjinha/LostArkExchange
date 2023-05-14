@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-class CharacterViewModel: ObservableObject{    
+class CharacterViewModel: ObservableObject{
     var equipmentsArray: [String] = ["무기", "어깨", "투구", "상의", "하의", "장갑"]
     var braceletArray: [String] = ["팔찌"]
     var accessoriesArray: [String] = ["반지", "귀걸이", "목걸이"]
     var abilitystoneArray: [String] = ["어빌리티 스톤"]
-    var seal: [String] = ["각인"]
+    var engravingArray: [String] = ["각인"]
     
     @Published var equipment: EquipmentViewData = EquipmentViewData(name: "",
                                                                 image: "",

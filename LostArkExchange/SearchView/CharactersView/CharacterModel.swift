@@ -67,28 +67,12 @@ struct AbilitystoneViewData {
     var qualityColor: Color
 }
 
-struct Tooltip: Codable {
-    let name: String
-    let itemType: String
-    let quality: Int
-    let isEquipped: Bool
-    let tradeRestriction: String
-    let basicStats: [String: Int]
-    let additionalStats: [String: Int]
-    let randomEnchant: String
-    let destroyRestriction: Bool
-    let upgradeRestriction: Bool
-    
-    enum CodingKeys: String, CodingKey {
-        case name = "Element_000"
-        case itemType = "Element_001"
-        case quality = "Element_001.value.qualityValue"
-        case isEquipped = "Element_001.value.rightStr0"
-        case tradeRestriction = "Element_003.value"
-        case basicStats = "Element_004.value"
-        case additionalStats = "Element_005.value"
-        case randomEnchant = "Element_006.value.Element_000.contentStr.Element_000.contentStr"
-        case destroyRestriction = "Element_007.value.contains(\"파괴불가\")"
-        case upgradeRestriction = "Element_007.value.contains(\"품질 업그레이드 불가\")"
-    }
+enum Item {
+    case equipment
+    case bracelet
+    case accessory
+    case abilitystone
+    case engraving
 }
+
+

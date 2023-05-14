@@ -45,7 +45,7 @@ class CharacterProfileAPI: ObservableObject {
                 let apiResponse = try JSONDecoder().decode(CharacterProfile.self, from: data)
                 DispatchQueue.main.async {
                     self.posts?[apiResponse.characterName] = apiResponse
-                    print(apiResponse)
+//                    print(apiResponse)x
                 }
             } catch let DecodingError.dataCorrupted(context) {
                 print(context)

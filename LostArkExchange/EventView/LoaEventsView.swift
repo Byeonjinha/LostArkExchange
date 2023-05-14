@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoaEventsView: View {
     @StateObject private var searchEvent = EventAPI.shared
-    @Binding var urlData: URLData!
+    @Binding var urlData: URLData?
     var body: some View {
         if !searchEvent.posts.isEmpty {
             VStack {
