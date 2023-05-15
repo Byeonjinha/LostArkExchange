@@ -5,7 +5,6 @@
 //  Created by Byeon jinha on 2023/01/07.
 //
 
-import Combine
 import SwiftUI
 import UIKit
 
@@ -39,7 +38,7 @@ struct CategoriesPickerView: UIViewRepresentable {
         pickerView.itemGrades = self.itemGrades
         pickerView.itemGradeQualities = self.itemGradeQualities
         pickerView.itemTiers = self.itemTiers
-        
+
         pickerView.delegate = pickerView.self
         pickerView.dataSource = pickerView.self  
     }

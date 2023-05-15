@@ -16,6 +16,8 @@ func findEquipments(itemDatas: Equipments, itemArray: [String], itemType: Item) 
         if itemArray.contains(itemData?.type ?? "") {
             var componentEquipmentsData: [String] = [itemData?.type ?? ""]
             componentEquipmentsData.append(itemData?.icon ?? "")
+            componentEquipmentsData.append(itemData?.name ?? "")
+            componentEquipmentsData.append(itemData?.grade ?? "")
             var parsedItemData = [String?]()
             switch itemType {
             case .equipment:

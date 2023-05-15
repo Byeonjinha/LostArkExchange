@@ -8,21 +8,13 @@
 import SwiftUI
 
 struct EquipmentDescriptionView: View {
-    
-    @Binding var equipmentName: String
-    @Binding var equipmentImage: String
-    @Binding var equipmentQuality: String
-    @Binding var equipmentBasicStat: String
-    @Binding var equipmentOptionStat: String
-    @Binding var equipmentBasicText: String
-    @Binding var equipmentOptionText: String
-    @Binding var equipmentColor: String
-    @Binding var equipmentQulityColor: Color
-    
+    var equipmentsArray: [String]
+    @Binding var isEquipmentsViewStatus: Int
+    @Binding var equipment: EquipmentViewData
     var body: some View {
         VStack {
             HStack {
-                AsyncImage(url: URL(string: equipmentImage)) { phash in
+                AsyncImage(url: URL(string: equipment.image)) { phash in
                     if let image = phash.image {
                         image.ImageModifier()
                     } else if phash.error != nil {
@@ -37,24 +29,22 @@ struct EquipmentDescriptionView: View {
                 }
                 .multilineTextAlignment(.leading)
                 .frame(width: w * 0.05)
-                Text("\(equipmentName)")
-                    .foregroundColor(Color(hex: equipmentColor))
-                Text("[\(equipmentQuality)]")
-                    .foregroundColor(equipmentQulityColor)
+                Text("\(equipment.name)")
+                    .foregroundColor(equipment.gradeColor)
+                Text("[\(equipment.quality)]")
+                    .foregroundColor(equipment.qualityColor)
                 Spacer()
             }
             HStack {
                 VStack {
-                    HTMLView(html: equipmentBasicText, isScrollEnabled: false)
-                        .frame(height: h * 0.025)
-                    HTMLView(html: equipmentBasicStat, isScrollEnabled: false)
+                    HTMLView(html: equipment.basicText, isScrollEnabled: false)
+                    HTMLView(html: equipment.basicStat, isScrollEnabled: false)
                 }
                 VStack {
-                    HTMLView(html: equipmentOptionText, isScrollEnabled: false)
-                        .frame(height: h * 0.025)
-                    HTMLView(html: equipmentOptionStat, isScrollEnabled: false)
+                    HTMLView(html: equipment.optionText, isScrollEnabled: false)
+                    HTMLView(html: equipment.optionStat, isScrollEnabled: false)
                 }
-            }
+            }.frame(height: h * 0.1)
             Spacer()
         }
     }

@@ -80,3 +80,4 @@ struct EquipmentElement: Codable {
 }
 
 typealias Equipments = [EquipmentElement?]?
+

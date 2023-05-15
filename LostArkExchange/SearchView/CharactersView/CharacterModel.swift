@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+
 struct EquipmentViewData {
+    var type: String
     var name: String
     var image: String
     var quality: String
@@ -15,8 +17,9 @@ struct EquipmentViewData {
     var basicText: String
     var optionStat: String
     var optionText: String
-    var color: String
+    var grade: String
     var qualityColor: Color
+    var gradeColor: Color
 }
 
 struct EngravingViewData {

@@ -55,15 +55,9 @@ struct CharacterDetailEquipmentsView: View {
             Button(action: {
                 vm.isEquipmentsViewStatus = 0
             } ) {
-                EquipmentDescriptionView(equipmentName: $vm.equipment.name,
-                                         equipmentImage: $vm.equipment.image,
-                                         equipmentQuality: $vm.equipment.quality,
-                                         equipmentBasicStat: $vm.equipment.basicStat,
-                                         equipmentOptionStat: $vm.equipment.optionStat,
-                                         equipmentBasicText: $vm.equipment.basicText,
-                                         equipmentOptionText: $vm.equipment.optionText,
-                                         equipmentColor: $vm.equipment.color,
-                                         equipmentQulityColor: $vm.equipment.qualityColor)
+                EquipmentDescriptionView(equipmentsArray: vm.equipmentsArray,
+                                         isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
+                                         equipment: $vm.equipment)
             }
         } else if vm.isEquipmentsViewStatus == 2 {
             Button(action: {
@@ -124,3 +118,4 @@ struct CharacterDetailEquipmentsView: View {
         }
     }
 }
+

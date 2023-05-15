@@ -13,18 +13,16 @@ struct HTMLView: UIViewRepresentable {
     func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<Self>) {
         DispatchQueue.main.async {
             let addCss = "<head><style>" +
-        """
-          @font-face {
-            font-family: "사용할폰트";
-          }
-        
-          body {
-            font-family: "사용할폰트";
-            color: White;
-            line-height: 1.0;
-          }
-        """
-            + " </style></head>" + "<body>" + html + "</body>"
+    """
+    body {
+        color: White;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    """
+    + " </style></head>" + "<body>" + html + "</body>"
             let data = Data(addCss.utf8)
             if let attributedString = try? NSAttributedString(
                 data: data,
@@ -35,7 +33,8 @@ struct HTMLView: UIViewRepresentable {
                 uiView.isEditable = false
                 uiView.attributedText = attributedString
                 uiView.textAlignment = .center
-                uiView.alignmentRectInsets
+
+                uiView.textContainer.lineFragmentPadding = 0
             }
         }
     }
@@ -44,7 +43,7 @@ struct HTMLView: UIViewRepresentable {
         let uiTextView = UITextView()
         uiTextView.backgroundColor = .clear
         uiTextView.isScrollEnabled = isScrollEnabled
-        uiTextView.frame = CGRect(x: 0, y: 0, width: w * 0.1, height: h * 0.001)
         return uiTextView
     }
 }
+

@@ -12,21 +12,13 @@ struct CharacterEquipmentsView: View {
     var equipmentsArray: [String]
     @Binding var isEquipmentsViewStatus: Int
     @Binding var equipment: EquipmentViewData
-//    [weaponse, strQualityValue, basicText, basicStat, optionalText, optionalStat]
+    
     var body: some View {
-        ForEach(findEquipmentElements.indices, id: \.self) {equipmentIdx in
-            if equipmentsArray.contains(findEquipmentElements[equipmentIdx][0]) {
-                let equipmentImage =  findEquipmentElements[equipmentIdx][1]
-                let equipmentName = findEquipmentElements[equipmentIdx][2]
-                let equipmentQuality = findEquipmentElements[equipmentIdx][3]
-                let equipmentBasicText =  findEquipmentElements[equipmentIdx][4]
-                let equipmentBasicStat =  findEquipmentElements[equipmentIdx][5]
-                let equipmentOptionText =  findEquipmentElements[equipmentIdx][6]
-                let equipmentOptionStat =  findEquipmentElements[equipmentIdx][7]
-                let qualityColor = findItemQualityColor(quaility: Int(equipmentQuality) ?? 0)
-
+        ForEach(findEquipmentElements, id: \.self) { equipmentElement in
+            let equipment: EquipmentViewData = makeEquipments(element: equipmentElement)
+            if equipmentsArray.contains(equipmentElement[0]) {
                 HStack {
-                    AsyncImage(url: URL(string: equipmentImage)) { phash in
+                    AsyncImage(url: URL(string: equipment.image)) { phash in
                         if let image = phash.image {
                             image.ImageModifier()
                         } else if phash.error != nil {
@@ -41,20 +33,13 @@ struct CharacterEquipmentsView: View {
                     }
                     .multilineTextAlignment(.leading)
                     .frame(height: h * 0.02)
-                    HTMLView(html: equipmentName, isScrollEnabled: false)
-                        .frame(height: h * 0.001)
-                    Text("[\(equipmentQuality)]")
-                        .foregroundColor(qualityColor)
+                    Text("[\(equipment.name)]")
+                        .foregroundColor(equipment.gradeColor)
+                    Text("[\(equipment.quality)]")
+                        .foregroundColor(equipment.qualityColor)
                 }.onTapGesture(perform: {
                     self.isEquipmentsViewStatus = 1
-                    self.equipment.name = equipmentName
-                    self.equipment.image = equipmentImage
-                    self.equipment.quality = equipmentQuality
-                    self.equipment.basicStat = equipmentBasicStat
-                    self.equipment.optionStat = equipmentOptionStat
-                    self.equipment.basicText = equipmentBasicText
-                    self.equipment.optionText = equipmentOptionText
-                    self.equipment.qualityColor = qualityColor
+                    self.equipment = equipment
                 })
                 
             }
