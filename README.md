@@ -20,8 +20,51 @@ iOS: 15.1+,  Xcode: 14.1
 
 ## 기술적 도전
 ------------------------
- 
-```
+HTML을 활용해  iOS에서 뷰 생성
+ ![image](https://github.com/Byeonjinha/LostArkExchange/assets/87685946/6564458b-e8c8-44fc-b9b8-53db9935d8bf)
+
+```Swift
+import SwiftUI
+
+struct HTMLView: UIViewRepresentable {
+    let html: String
+    let isScrollEnabled: Bool
+    func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<Self>) {
+        DispatchQueue.main.async {
+            let addCss = "<head><style>" +
+        """
+          @font-face {
+            font-family: "font";
+          }
+          body {
+            font-family: "font";
+            color: White;
+            line-height: 1.0;
+          }
+        """
+            + " </style></head>" + "<body>" + html + "</body>"
+            let data = Data(addCss.utf8)
+            if let attributedString = try? NSAttributedString(
+                data: data,
+                options: [.documentType: NSAttributedString.DocumentType.html,
+                          .characterEncoding: String.Encoding.utf8.rawValue],
+                documentAttributes: nil)
+            {
+                uiView.isEditable = false
+                uiView.attributedText = attributedString
+                uiView.textAlignment = .center
+            }
+        }
+    }
+    
+    func makeUIView(context: UIViewRepresentableContext<Self>) -> UITextView {
+        let uiTextView = UITextView()
+        uiTextView.backgroundColor = .clear
+        uiTextView.isScrollEnabled = isScrollEnabled
+        return uiTextView
+    }
+}
+
 ```
 ## License
 ------------------------
