@@ -66,6 +66,51 @@ struct HTMLView: UIViewRepresentable {
 }
 
 ```
+
+UIPickerView Custom
+<img width="275" alt="image" src="https://github.com/Byeonjinha/LostArkExchange/assets/87685946/7c18f482-9153-4a9e-83fb-2f758dca12d9">
+
+```Swift
+import SwiftUI
+import UIKit
+
+var bindingUpdate:()->Void={}
+
+struct CategoriesPickerView: UIViewRepresentable {
+    @Binding var choicedCategorie: Int
+    @Binding var choicedGrade: Int
+    @Binding var itemGradeQuality: Int
+    @Binding var itemTier: Int
+   
+    
+    let categories: [(Int, String)]?
+    let itemGrades: [String]?
+    let itemGradeQualities: [Int]?
+    let itemTiers: [Int]
+    
+    @ObservedObject var pickerView = CategoriesUIPickerView(categories: [(0, "A")], itemGrades: ["A"], itemGradeQualities: [0], itemTiers: [0])
+    
+    func makeUIView(context: Context) -> UIPickerView {
+        bindingUpdate={
+            self.choicedCategorie = pickerView.choicedCategorie ?? 0
+            self.choicedGrade = pickerView.choicedGrade ?? 0
+            self.itemGradeQuality = pickerView.itemGradeQuality ?? 0
+            self.itemTier = pickerView.itemTier ?? 0
+        }
+        return pickerView
+    }
+    func updateUIView(_ uiView: UIPickerView, context: Context) {
+        pickerView.categories = self.categories
+        pickerView.itemGrades = self.itemGrades
+        pickerView.itemGradeQualities = self.itemGradeQualities
+        pickerView.itemTiers = self.itemTiers
+
+        pickerView.delegate = pickerView.self
+        pickerView.dataSource = pickerView.self  
+    }
+}
+
+```
 ## License
 ------------------------
 [MIT](https://choosealicense.com/licenses/mit/)
