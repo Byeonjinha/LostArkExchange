@@ -36,7 +36,12 @@ struct CharacterStatusView: View {
             }
             
             ScrollView (.horizontal, showsIndicators: false) {
-                CharacterDetailView(characterName: characterName, characterClassName: characterClassName, characterLevel: characterLevel, serverName: serverName, itemAvgLevel: itemAvgLevel, itemMaxLevel: itemMaxLevel)
+                CharacterDetailView(characterName: characterName,
+                                    characterClassName: characterClassName,
+                                    characterLevel: characterLevel,
+                                    serverName: serverName,
+                                    itemAvgLevel: itemAvgLevel,
+                                    itemMaxLevel: itemMaxLevel)
                 .frame(width: w * 0.9 , height: isViewDetail ? h * 0.32 : 0)
             }
         }

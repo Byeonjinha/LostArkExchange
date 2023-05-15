@@ -16,6 +16,8 @@
 		BA177C652976CB7E00988613 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA177C642976CB7E00988613 /* CharacterDetailView.swift */; };
 		BA177C6729772F1600988613 /* CharacterProfileAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA177C6629772F1600988613 /* CharacterProfileAPI.swift */; };
 		BA177C69297806FC00988613 /* TextLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA177C68297806FC00988613 /* TextLimiter.swift */; };
+		BA1DE7512A122D5C00D823F4 /* ItemSerachModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DE7502A122D5C00D823F4 /* ItemSerachModel.swift */; };
+		BA1DE7532A1238A900D823F4 /* CharacterItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1DE7522A1238A900D823F4 /* CharacterItemViewModel.swift */; };
 		BA379DBD2965650D00FC1F28 /* LostArkExchangeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379DBC2965650D00FC1F28 /* LostArkExchangeApp.swift */; };
 		BA379DBF2965650D00FC1F28 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379DBE2965650D00FC1F28 /* MainView.swift */; };
 		BA379DC12965650E00FC1F28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA379DC02965650E00FC1F28 /* Assets.xcassets */; };
@@ -62,7 +64,7 @@
 		BA9FEF8529833EFD00BC0669 /* BraceletDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF8429833EFD00BC0669 /* BraceletDescriptionView.swift */; };
 		BA9FEF872983B15800BC0669 /* AbilityStoneDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF862983B15800BC0669 /* AbilityStoneDescriptionView.swift */; };
 		BAE5819B2A0A2C24009A1567 /* CharacterViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819A2A0A2C24009A1567 /* CharacterViewModel .swift */; };
-		BAE5819D2A0A3253009A1567 /* MangnaniMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819C2A0A3253009A1567 /* MangnaniMethods.swift */; };
+		BAE5819D2A0A3253009A1567 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819C2A0A3253009A1567 /* Functions.swift */; };
 		BAE581A02A0A3986009A1567 /* CharacterEquipmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819F2A0A3986009A1567 /* CharacterEquipmentsView.swift */; };
 		BAE581A22A0A3C11009A1567 /* CharacterEngravingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE581A12A0A3C11009A1567 /* CharacterEngravingsView.swift */; };
 		BAE581A42A0A3D5B009A1567 /* CharacterAccesoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE581A32A0A3D5B009A1567 /* CharacterAccesoriesView.swift */; };
@@ -102,6 +104,8 @@
 		BA177C642976CB7E00988613 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		BA177C6629772F1600988613 /* CharacterProfileAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProfileAPI.swift; sourceTree = "<group>"; };
 		BA177C68297806FC00988613 /* TextLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLimiter.swift; sourceTree = "<group>"; };
+		BA1DE7502A122D5C00D823F4 /* ItemSerachModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSerachModel.swift; sourceTree = "<group>"; };
+		BA1DE7522A1238A900D823F4 /* CharacterItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterItemViewModel.swift; sourceTree = "<group>"; };
 		BA379DB92965650D00FC1F28 /* LostArkExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LostArkExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA379DBC2965650D00FC1F28 /* LostArkExchangeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LostArkExchangeApp.swift; sourceTree = "<group>"; };
 		BA379DBE2965650D00FC1F28 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -150,7 +154,7 @@
 		BA9FEF8429833EFD00BC0669 /* BraceletDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraceletDescriptionView.swift; sourceTree = "<group>"; };
 		BA9FEF862983B15800BC0669 /* AbilityStoneDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityStoneDescriptionView.swift; sourceTree = "<group>"; };
 		BAE5819A2A0A2C24009A1567 /* CharacterViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterViewModel .swift"; sourceTree = "<group>"; };
-		BAE5819C2A0A3253009A1567 /* MangnaniMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangnaniMethods.swift; sourceTree = "<group>"; };
+		BAE5819C2A0A3253009A1567 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		BAE5819F2A0A3986009A1567 /* CharacterEquipmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEquipmentsView.swift; sourceTree = "<group>"; };
 		BAE581A12A0A3C11009A1567 /* CharacterEngravingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEngravingsView.swift; sourceTree = "<group>"; };
 		BAE581A32A0A3D5B009A1567 /* CharacterAccesoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAccesoriesView.swift; sourceTree = "<group>"; };
@@ -216,7 +220,7 @@
 				BA9FEF762982E43E00BC0669 /* CharacterDetailEquipmentsView.swift */,
 				BAE5819A2A0A2C24009A1567 /* CharacterViewModel .swift */,
 				BAE581A52A0A46D9009A1567 /* CharacterModel.swift */,
-				BAE5819C2A0A3253009A1567 /* MangnaniMethods.swift */,
+				BAE5819C2A0A3253009A1567 /* Functions.swift */,
 			);
 			path = CharactersView;
 			sourceTree = "<group>";
@@ -402,6 +406,7 @@
 				BA379E59296C144000FC1F28 /* SkillOptionsView.swift */,
 				BA794492296C180800D8B8CA /* ItemSkillOptionsView.swift */,
 				BA379E112968D31C00FC1F28 /* ItemSearchView.swift */,
+				BA1DE7502A122D5C00D823F4 /* ItemSerachModel.swift */,
 			);
 			path = ItemSearchView;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				BAE581A32A0A3D5B009A1567 /* CharacterAccesoriesView.swift */,
 				BAE581A72A0A499B009A1567 /* CharacterBraceletsView.swift */,
 				BAE581A92A0A4AED009A1567 /* CharacterAbilitystone.swift */,
+				BA1DE7522A1238A900D823F4 /* CharacterItemViewModel.swift */,
 			);
 			path = CharacterItemViews;
 			sourceTree = "<group>";
@@ -698,12 +704,14 @@
 				BA379E1B296AC67E00FC1F28 /* ItemEtcOptionsView.swift in Sources */,
 				BA9FEF70298112A200BC0669 /* CharacterImageView.swift in Sources */,
 				BA379DF92968827B00FC1F28 /* AppExtensions.swift in Sources */,
+				BA1DE7512A122D5C00D823F4 /* ItemSerachModel.swift in Sources */,
 				BA379DEF29656F3F00FC1F28 /* EventView.swift in Sources */,
 				BA7944AC297073ED00D8B8CA /* AppDelegate.swift in Sources */,
 				BA794499296E98C100D8B8CA /* ColorExtension.swift in Sources */,
 				BA9FEF772982E43E00BC0669 /* CharacterDetailEquipmentsView.swift in Sources */,
+				BA1DE7532A1238A900D823F4 /* CharacterItemViewModel.swift in Sources */,
 				BA9FEF752981BE8B00BC0669 /* EngravingsAPI.swift in Sources */,
-				BAE5819D2A0A3253009A1567 /* MangnaniMethods.swift in Sources */,
+				BAE5819D2A0A3253009A1567 /* Functions.swift in Sources */,
 				BA9FEF6E297A767200BC0669 /* EquipmentsAPI.swift in Sources */,
 				BA379DF6296880DE00FC1F28 /* ItemSearchCategoriesView.swift in Sources */,
 				BA379E192968D70F00FC1F28 /* WebViewViewModel.swift in Sources */,

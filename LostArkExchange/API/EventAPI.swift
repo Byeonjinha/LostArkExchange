@@ -54,7 +54,7 @@ class EventAPI: ObservableObject {
                     self.posts.append(apiResponse)
                 }
             } catch let DecodingError.dataCorrupted(context) {
-//                print(context)
+                print(context)
             } catch let DecodingError.keyNotFound(key, context) {
                 print("키문제 '\(key)' not found:", context.debugDescription)
                 print("코딩패스문제:", context.codingPath)

@@ -9,20 +9,18 @@ import SwiftUI
 
 struct CharacterEngravingsView: View {
     var findEngravingsElements: [[String]]
+    
+    @StateObject var vm = CharacterItemViewModel()
+    
     @Binding var isEquipmentsViewStatus: Int
     @Binding var engraving: EngravingViewData
     
     var body: some View {
-        ForEach(findEngravingsElements.indices, id: \.self) { engravingIdx in
-            let engravingName = findEngravingsElements[engravingIdx][0]
-            let engravingImage = findEngravingsElements[engravingIdx][1]
-            let engravingColor = findEngravingsElements[engravingIdx][2]
-            let engravingText = findEngravingsElements[engravingIdx][3]
-            let engravingDescription =  findEngravingsElements[engravingIdx][4]
-            let engravingLevel = findEngravingsElements[engravingIdx][5]
+        ForEach(findEngravingsElements, id: \.self) { engravingsElements in
+            let engraving = vm.makeEngraving(element: engravingsElements)
 
             HStack {
-                AsyncImage(url: URL(string: engravingImage)) { phash in
+                AsyncImage(url: URL(string: engraving.image)) { phash in
                     if let image = phash.image {
                         image.ImageModifier()
                     } else if phash.error != nil {
@@ -38,18 +36,13 @@ struct CharacterEngravingsView: View {
                 .multilineTextAlignment(.leading)
                 .frame(width: w * 0.05)
                 HStack {
-                    Text("\(engravingName) + \(engravingLevel)")
-                        .foregroundColor(Color(hex: engravingColor))
+                    Text("\(engraving.name) + \(engraving.level)")
+                        .foregroundColor(.white)
                 }
             }
             .onTapGesture(perform: {
                 self.isEquipmentsViewStatus = 2
-                self.engraving.name = engravingName
-                self.engraving.image = engravingImage
-                self.engraving.color = engravingColor
-                self.engraving.text = engravingText
-                self.engraving.description = engravingDescription
-                self.engraving.level = engravingLevel
+                self.engraving = engraving
             })
         }
     }

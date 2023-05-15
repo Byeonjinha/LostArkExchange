@@ -10,21 +10,18 @@ import SwiftUI
 struct CharacterBraceletsView: View {
     var findBraceletElements: [[String]]
     var braceletArray: [String]
+    
+    @StateObject var vm = CharacterItemViewModel()
+    
     @Binding var isEquipmentsViewStatus: Int
     @Binding var bracelet: BraceletViewData
     
     var body: some View {
-        ForEach(findBraceletElements.indices, id: \.self) {equipmentIdx in
-            if braceletArray.contains(findBraceletElements[equipmentIdx][0]){
-                let braceletName = findBraceletElements[equipmentIdx][1]
-                let braceletImage = findBraceletElements[equipmentIdx][2]
-                let braceletColor = findBraceletElements[equipmentIdx][4]
-                let braceletOptionalStatText = findBraceletElements[equipmentIdx][5]
-                let braceletOptionalStat = findBraceletElements[equipmentIdx][6]
-                let braceletCanEnchantText = findBraceletElements[equipmentIdx][7]
-                
+        ForEach(findBraceletElements, id: \.self) {braceletElement in
+            let bracelet: BraceletViewData = vm.makeBracelet(element: braceletElement)
+            if braceletArray.contains(bracelet.type){
                 HStack {
-                    AsyncImage(url: URL(string: braceletImage)) { phash in
+                    AsyncImage(url: URL(string: bracelet.image)) { phash in
                         if let image = phash.image {
                             image.ImageModifier()
                         } else if phash.error != nil {
@@ -40,18 +37,13 @@ struct CharacterBraceletsView: View {
                     .multilineTextAlignment(.leading)
                     .frame(width: w * 0.05)
                     HStack {
-                        Text("\(braceletName)")
-                            .foregroundColor(Color(hex: braceletColor))
+                        Text("\(bracelet.name)")
+                            .foregroundColor(bracelet.gradeColor)
                     }
                 }
                 .onTapGesture(perform: {
                     isEquipmentsViewStatus = 4
-                    bracelet.name = braceletName
-                    bracelet.image = braceletImage
-                    bracelet.color = braceletColor
-                    bracelet.statText = braceletOptionalStatText
-                    bracelet.optionalStat = braceletOptionalStat
-                    bracelet.enchantText = braceletCanEnchantText
+                    self.bracelet = bracelet
                 })
             }
         }

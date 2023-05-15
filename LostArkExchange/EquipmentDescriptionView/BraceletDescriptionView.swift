@@ -8,16 +8,11 @@
 import SwiftUI
 
 struct BraceletDescriptionView: View {
-    @Binding var braceletName: String
-    @Binding var braceletImage: String
-    @Binding var braceletColor: String
-    @Binding var braceletStatText: String
-    @Binding var braceletOptionalStat: String
-    @Binding var braceletEnchantText: String
+    @Binding var bracelet: BraceletViewData
     var body: some View {
         VStack {
             HStack {
-                AsyncImage(url: URL(string: braceletImage)) { phash in
+                AsyncImage(url: URL(string: bracelet.image)) { phash in
                     if let image = phash.image {
                         image.ImageModifier()
                     } else if phash.error != nil {
@@ -32,19 +27,19 @@ struct BraceletDescriptionView: View {
                 }
                 .multilineTextAlignment(.leading)
                 .frame(width: w * 0.05)
-                Text("\(braceletName)")
-                    .foregroundColor(Color(hex: braceletColor))
+                Text("\(bracelet.name)")
+                    .foregroundColor(bracelet.gradeColor)
                 Spacer()
             }
             HStack {
                 VStack {
                     HStack {
-                        HTMLView(html:braceletStatText, isScrollEnabled: false)
+                        HTMLView(html:bracelet.statText, isScrollEnabled: false)
                             .frame(height: h * 0.025)
-                        HTMLView(html: braceletEnchantText, isScrollEnabled: false)
+                        HTMLView(html: bracelet.enchantText, isScrollEnabled: false)
                             .frame(height: h * 0.025)
                     }
-                    HTMLView(html: braceletOptionalStat, isScrollEnabled: true)
+                    HTMLView(html: bracelet.optionalStat, isScrollEnabled: true)
                     Spacer()
                 }
             }

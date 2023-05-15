@@ -9,17 +9,12 @@ import SwiftUI
 
 struct EngravingDescriptionView: View {
     
-    @Binding var engravingName: String
-    @Binding var engravingImage: String
-    @Binding var engravingColor: String
-    @Binding var engravingDescription: String
-    @Binding var engravingLevel: String
-    @Binding var engravingText: String
+    @Binding var engraving: EngravingViewData
     
     var body: some View {
         VStack {
             HStack {
-                AsyncImage(url: URL(string: engravingImage)) { phash in
+                AsyncImage(url: URL(string: engraving.image)) { phash in
                     if let image = phash.image {
                         image.ImageModifier()
                     } else if phash.error != nil {
@@ -34,15 +29,15 @@ struct EngravingDescriptionView: View {
                 }
                 .multilineTextAlignment(.leading)
                 .frame(width: w * 0.05)
-                Text("\(engravingName) +\(engravingLevel)")
-                    .foregroundColor(Color(hex: engravingColor))
+                Text("\(engraving.name) +\(engraving.level)")
+                    .foregroundColor(.white)
                 Spacer()
             }
             HStack {
                 VStack {
-                    HTMLView(html: engravingText, isScrollEnabled: false)
+                    HTMLView(html: engraving.text, isScrollEnabled: false)
                         .frame(height: h * 0.025)
-                    HTMLView(html: engravingDescription, isScrollEnabled: true)
+                    HTMLView(html: engraving.description, isScrollEnabled: true)
                 }
             }
             Spacer()

@@ -10,13 +10,16 @@ import SwiftUI
 struct CharacterEquipmentsView: View {
     var findEquipmentElements: [[String]]
     var equipmentsArray: [String]
+    
+    @StateObject var vm = CharacterItemViewModel()
+    
     @Binding var isEquipmentsViewStatus: Int
     @Binding var equipment: EquipmentViewData
     
     var body: some View {
         ForEach(findEquipmentElements, id: \.self) { equipmentElement in
-            let equipment: EquipmentViewData = makeEquipments(element: equipmentElement)
-            if equipmentsArray.contains(equipmentElement[0]) {
+            let equipment: EquipmentViewData = vm.makeEquipments(element: equipmentElement)
+            if equipmentsArray.contains(equipment.type) {
                 HStack {
                     AsyncImage(url: URL(string: equipment.image)) { phash in
                         if let image = phash.image {

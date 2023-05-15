@@ -34,8 +34,7 @@ struct HTMLView: UIViewRepresentable {
             {
                 uiView.isEditable = false
                 uiView.attributedText = attributedString
-                uiView.textAlignment = .center
-                uiView.alignmentRectInsets
+                uiView.textAlignment = .left
             }
         }
     }

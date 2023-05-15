@@ -47,7 +47,7 @@ class AuctionItemsAPI: ObservableObject {
                     self.posts.append(apiResponse)
                 }
             } catch let DecodingError.dataCorrupted(context) {
-//                print(context)
+                print(context)
                 print("dataCorrupted")
             } catch let DecodingError.keyNotFound(key, context) {
                 print("키문제 '\(key)' not found:", context.debugDescription)

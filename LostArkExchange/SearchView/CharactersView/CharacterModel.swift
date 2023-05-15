@@ -36,29 +36,28 @@ struct AccessoriesViewData {
     var gradeColor: Color
     var qualityColor: Color
 }
+struct BraceletViewData {
+    var type: String
+    var name: String
+    var image: String
+    var statText: String
+    var optionalStat: String
+    var enchantText: String
+    var gradeColor: Color
+}
 
 struct EngravingViewData {
     var name: String
     var image: String
-    var color: String
     var description: String
     var level: String
     var text: String
 }
 
-struct BraceletViewData {
-    var name: String
-    var image: String
-    var color: String
-    var statText: String
-    var optionalStat: String
-    var enchantText: String
-}
-
 struct AbilitystoneViewData {
+    var type: String
     var name: String
     var image: String
-    var color: String
     var basicText: String
     var basicStat: String
     var optionText: String
@@ -68,6 +67,7 @@ struct AbilitystoneViewData {
     var option3Text: String
     var quality: String
     var qualityColor: Color
+    var gradeColor: Color
 }
 
 enum Item {
@@ -75,7 +75,6 @@ enum Item {
     case bracelet
     case accessory
     case abilitystone
-    case engraving
 }
 
 
