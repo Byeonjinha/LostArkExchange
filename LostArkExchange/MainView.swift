@@ -18,21 +18,9 @@ struct MainView: View {
     @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
     @StateObject private var searchItemByCondition = AuctionItemsAPI.shared
     
-    @State private var isSearchItemPresented = false
+
     
-    @State var selectionCategoriesOption: Int = 0
-    @State var selectionGradesOption: Int = 0
-    @State var selectionGradeQualitiesOption: Int = 0
-    @State var selectionTiersOption: Int = 0
-    
-    @State var searchItemName: String = ""
-    @State var urlData: URLData!
-    @State var searchItemConditions: SearchItemConditions!
-    
-    
-    @State var searchCharacterName: String = ""
-    
-    @ObservedObject var viewModel = WebViewModel()
+    @ObservedObject var vm = WebViewModel()
     
     private var noticeURL: String = "https://lostark.game.onstove.com/News/Notice/List"
     
@@ -42,22 +30,22 @@ struct MainView: View {
                 VStack{
                     TabView {
                         ItemSearchView(
-                            searchItemName: $searchItemName,
-                            selectionCategoriesOption: $selectionCategoriesOption,
-                            selectionGradesOption: $selectionGradesOption,
-                            selectionGradeQualitiesOption: $selectionGradeQualitiesOption,
-                            selectionTiersOption: $selectionTiersOption,
-                            searchItemConditions: $searchItemConditions)
+                            searchItemName: $vm.selectionOptions.itemName,
+                            selectionCategoriesOption: $vm.selectionOptions.categories,
+                            selectionGradesOption: $vm.selectionOptions.grades,
+                            selectionGradeQualitiesOption: $vm.selectionOptions.gradeQualities,
+                            selectionTiersOption: $vm.selectionOptions.tiers,
+                            searchItemConditions: $vm.searchItemConditions)
                         .tabItem {
                             Image(systemName: "magnifyingglass")
                             Text("아이템 검색")
                         }
-                        CharacterSearchView(searchCharacter: $searchCharacterName)
+                        CharacterSearchView(searchCharacter: $vm.selectionOptions.characterName)
                             .tabItem {
                                 Image(systemName: "person.fill")
                                 Text("캐릭터 검색")
                             }
-                        LoaEventsView(urlData: $urlData)
+                        LoaEventsView(urlData: $vm.urlData)
                             .tabItem {
                                 Image(systemName: "calendar")
                                 Text("이벤트")
