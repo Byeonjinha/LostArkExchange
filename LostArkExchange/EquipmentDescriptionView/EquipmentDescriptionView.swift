@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct EquipmentDescriptionView: View {
-    var equipmentsArray: [String]
-    @Binding var isEquipmentsViewStatus: Int
     @Binding var equipment: EquipmentViewData
     var body: some View {
         VStack {

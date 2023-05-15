@@ -36,10 +36,10 @@ struct CharacterDetailEquipmentsView: View {
                 Spacer()
                 
                 VStack(alignment: .leading) {
-//                    CharacterAccesoriesView(findAccessoriesElements: findAccessoriesElements,
-//                                            accessoriesArray: vm.accessoriesArray,
-//                                            isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
-//                                            accessories: $vm.accessories)
+                    CharacterAccesoriesView(findAccessoriesElements: findAccessoriesElements,
+                                            accessoriesArray: vm.accessoriesArray,
+                                            isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
+                                            accessories: $vm.accessories)
 //                    CharacterBraceletsView(findBraceletElements: findBraceletElements,
 //                                           braceletArray: vm.braceletArray,
 //                                           isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
@@ -55,9 +55,7 @@ struct CharacterDetailEquipmentsView: View {
             Button(action: {
                 vm.isEquipmentsViewStatus = 0
             } ) {
-                EquipmentDescriptionView(equipmentsArray: vm.equipmentsArray,
-                                         isEquipmentsViewStatus: $vm.isEquipmentsViewStatus,
-                                         equipment: $vm.equipment)
+                EquipmentDescriptionView(equipment: $vm.equipment)
             }
         } else if vm.isEquipmentsViewStatus == 2 {
             Button(action: {
@@ -74,17 +72,7 @@ struct CharacterDetailEquipmentsView: View {
             Button(action: {
                 vm.isEquipmentsViewStatus = 0
             } ) {
-                AccessoriesDescriptionView(accessoriesName: $vm.accessories.name,
-                                           accessoriesImage: $vm.accessories.image,
-                                           accessoriesColor: $vm.accessories.color,
-                                           accessoriesOptionalText: $vm.accessories.optionalText,
-                                           accessoriesOptionalStat: $vm.accessories.optionalStat,
-                                           accessoriesRandomEffect1: $vm.accessories.randomEffect1,
-                                           accessoriesRandomEffect2: $vm.accessories.randomEffect2,
-                                           accessoriesRandomEffect3: $vm.accessories.randomEffect3,
-                                           accessoriesQuality: $vm.accessories.quality,
-                                           accessoriesQualityColor: $vm.accessories.qualityColor,
-                                           accessoriesRandomEffectText: $vm.accessories.randomEffectText)
+                AccessoriesDescriptionView(accessories: $vm.accessories)
             }
         } else if vm.isEquipmentsViewStatus == 4 {
             Button(action: {

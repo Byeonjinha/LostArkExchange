@@ -32,17 +32,18 @@ class CharacterViewModel: ObservableObject{
                                                                     level: "",
                                                                     text: "")
     
-    @Published var accessories: AccessoriesViewData = AccessoriesViewData(name: "",
+    @Published var accessories: AccessoriesViewData = AccessoriesViewData(type: "",
+                                                                          name: "",
                                                                           image: "",
-                                                                          color: "",
+                                                                          quality: "",
                                                                           optionalText: "",
                                                                           optionalStat: "",
                                                                           randomEffect1: "",
                                                                           randomEffect2: "",
                                                                           randomEffect3: "",
-                                                                          quality: "",
-                                                                          qualityColor: .white,
-                                                                          randomEffectText: "")
+                                                                          randomEffectText: "",
+                                                                          gradeColor: .white,
+                                                                          qualityColor: .white)
     
     @Published var bracelet: BraceletViewData = BraceletViewData(name: "",
                                                                  image: "",
@@ -70,8 +71,6 @@ class CharacterViewModel: ObservableObject{
 
 
 func makeEquipments(element: [String]) -> EquipmentViewData {
-    
-    print(element, "emelent")
     var data:EquipmentViewData = EquipmentViewData(type: element[0],
                                                    name: element[2],
                                                    image: element[1],
@@ -86,17 +85,34 @@ func makeEquipments(element: [String]) -> EquipmentViewData {
     )
     if element.count > 8{
         data = EquipmentViewData(type: element[0],
+                                 name: element[2],
+                                 image: element[1],
+                                 quality: element[4],
+                                 basicStat: element[6],
+                                 basicText: element[5],
+                                 optionStat: element[8],
+                                 optionText: element[7],
+                                 grade: element[3],
+                                 qualityColor: findItemQualityColor(quaility: Int(element[4]) ?? 0),
+                                 gradeColor: findItemGradeColor(grade: element[3])
+        )
+    }
+    return data
+}
+
+
+func makeAccessories(element: [String]) -> AccessoriesViewData {
+    let data:AccessoriesViewData = AccessoriesViewData(type: element[0],
                                                        name: element[2],
                                                        image: element[1],
-                                                       quality: element[5],
-                                                       basicStat: element[7],
-                                                       basicText: element[6],
-                                                       optionStat: element[9],
-                                                       optionText: element[8],
-                                                       grade: element[3],
-                                                       qualityColor: findItemQualityColor(quaility: Int(element[5]) ?? 0),
-                                                       gradeColor: findItemGradeColor(grade: element[3])
-                                 )
-    }
+                                                       quality: element[4],
+                                                       optionalText: element[5],
+                                                       optionalStat: element[6],
+                                                       randomEffect1: element[7],
+                                                       randomEffect2: element[8],
+                                                       randomEffect3: element[9],
+                                                       randomEffectText: element[10],
+                                                       gradeColor: findItemGradeColor(grade: element[3]),
+                                                       qualityColor: findItemQualityColor(quaility: Int(element[4]) ?? 0))
     return data
 }

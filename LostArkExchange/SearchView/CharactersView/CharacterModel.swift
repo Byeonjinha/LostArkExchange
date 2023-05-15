@@ -22,6 +22,21 @@ struct EquipmentViewData {
     var gradeColor: Color
 }
 
+struct AccessoriesViewData {
+    var type: String
+    var name: String
+    var image: String
+    var quality: String
+    var optionalText: String
+    var optionalStat: String
+    var randomEffect1: String
+    var randomEffect2: String
+    var randomEffect3: String
+    var randomEffectText: String
+    var gradeColor: Color
+    var qualityColor: Color
+}
+
 struct EngravingViewData {
     var name: String
     var image: String
@@ -29,21 +44,6 @@ struct EngravingViewData {
     var description: String
     var level: String
     var text: String
-}
-
-
-struct AccessoriesViewData {
-    var name: String
-    var image: String
-    var color: String
-    var optionalText: String
-    var optionalStat: String
-    var randomEffect1: String
-    var randomEffect2: String
-    var randomEffect3: String
-    var quality: String
-    var qualityColor: Color
-    var randomEffectText: String
 }
 
 struct BraceletViewData {

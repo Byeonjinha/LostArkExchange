@@ -23,7 +23,7 @@ func findEquipments(itemDatas: Equipments, itemArray: [String], itemType: Item) 
             case .equipment:
                 parsedItemData = parseEquipmentsJSONString(jsonString: itemData?.tooltip)
             case .accessory:
-                parsedItemData = parseAccessoriesJSONString(jsonString: itemData?.tooltip) ?? []
+                parsedItemData = parseAccessoriesJSONString(jsonString: itemData?.tooltip)
                 if parsedItemData.isEmpty {
                     parsedItemData = parseAccessoriesJSONString2(jsonString: itemData?.tooltip) ?? []
                 }
@@ -44,12 +44,13 @@ func findEquipments(itemDatas: Equipments, itemArray: [String], itemType: Item) 
             for item in parsedItemData {
                 if let unwrappedItem = item {
                     componentEquipmentsData.append(unwrappedItem)
+                } else {
+                    componentEquipmentsData.append("")
                 }
             }
             returnEquipmentsData.append(componentEquipmentsData)
         }
     }
-    print(returnEquipmentsData)
     return returnEquipmentsData
 }
 func parseEquipmentsJSONString(jsonString: String?) -> [String?] {
@@ -57,10 +58,6 @@ func parseEquipmentsJSONString(jsonString: String?) -> [String?] {
     
     do {
         guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return [] }
-        
-        let itemsObject000: [String: Any]? = json["Element_000"] as? [String: Any]
-        let weaponse:String? = itemsObject000?["value"] as? String
-        
         let itemsObject001: [String: Any]? = json["Element_001"] as? [String: Any]
         let items001Value: [String:Any]? = itemsObject001?["value"] as? [String:Any]
         let qualityValue: Int? = items001Value?["qualityValue"] as? Int
@@ -76,7 +73,7 @@ func parseEquipmentsJSONString(jsonString: String?) -> [String?] {
         let optionalText: String?  = items006Value?["Element_000"] as? String
         let optionalStat: String?  = items006Value?["Element_001"] as? String
         
-        let parsedData: [String?] = [weaponse, strQualityValue, basicText, basicStat, optionalText, optionalStat]
+        let parsedData: [String?] = [strQualityValue, basicText, basicStat, optionalText, optionalStat]
         return parsedData
         
     } catch {
@@ -85,111 +82,41 @@ func parseEquipmentsJSONString(jsonString: String?) -> [String?] {
     }
 }
 
-func parseAccessoriesJSONString(jsonString : String?) -> [String]? {
-    
-    var parsedData = [String]()
-    let fontText = "FONT COLOR="
-    var weaponseColor = ""
-    guard let data = (jsonString ?? "").data(using: .utf8) else {
-        return nil
-    }
+func parseAccessoriesJSONString(jsonString : String?) -> [String?] {
+    guard let data = (jsonString ?? "").data(using: .utf8) else { return [] }
     do {
-        guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: AnyObject] else {
-            return parsedData
-        }
+        guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else { return [] }
+        let itemsObject001 = json["Element_001"] as? [String: AnyObject]
+        let items001Value = itemsObject001?["value"] as? [String:AnyObject]
+        let qualityValue = items001Value?["qualityValue"] as? Int
+        let strQualityValue = String(qualityValue ?? 0)
         
-        guard let itemsObject000 = json["Element_000"] as? [String: AnyObject] else {
-            return parsedData
-        }
+        let itemsObject005 = json["Element_005"] as? [String: AnyObject]
+        let items005Value = itemsObject005?["value"] as? [String:AnyObject]
+        let optionalText = items005Value?["Element_000"] as? String
+        let optionalStat = items005Value?["Element_001"] as? String
+
+        let itemsObject006 = json["Element_006"] as? [String: AnyObject]
+        let items006Value = itemsObject006?["value"] as? [String:AnyObject]
+        let randomSealText = items006Value?["Element_000"] as? [String:AnyObject]
         
-        guard let itemsObject001 = json["Element_001"] as? [String: AnyObject] else {
-            return parsedData
-        }
+        let randomSealEffects = randomSealText?["contentStr"] as? [String:AnyObject]
+        let randomSealEffectText = randomSealText?["topStr"] as? String
         
-        guard let itemsObject005 = json["Element_005"] as? [String: AnyObject] else {
-            return parsedData
-        }
-        
-        guard let itemsObject006 = json["Element_006"] as? [String: AnyObject] else {
-            return parsedData
-        }
-        guard let items000Value = itemsObject000["value"] as? String else {
-            return parsedData
-        }
-        if let rangeS = items000Value.range(of: fontText) {
-            let weaponseIndex = items000Value.distance(from: items000Value.startIndex, to: rangeS.lowerBound) + fontText.count
-            weaponseColor = items000Value.substring(from: weaponseIndex+1, to: weaponseIndex + 7)
-        }
-        
-        guard let items001Value = itemsObject001["value"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        
-        guard let items005Value = itemsObject005["value"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        
-        guard let items006Value = itemsObject006["value"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        
-        
-        
-        guard let randomSealText = items006Value["Element_000"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        
-        guard let randomSealEffects = randomSealText["contentStr"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        
-        guard let randomSealEffectText = randomSealText["topStr"] as? String else {
-            return parsedData
-        }
-        
-        guard let randomSealEffect1 = randomSealEffects["Element_000"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        guard let randomSealEffect1Text = randomSealEffect1["contentStr"] as? String else {
-            return parsedData
-        }
-        
-        guard let randomSealEffect2 = randomSealEffects["Element_001"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        guard let randomSealEffect2Text = randomSealEffect2["contentStr"] as? String else {
-            return parsedData
-        }
-        
-        guard let randomSealEffect3 = randomSealEffects["Element_002"] as? [String:AnyObject] else {
-            return parsedData
-        }
-        guard let randomSealEffect3Text = randomSealEffect3["contentStr"] as? String else {
-            return parsedData
-        }
-        
-        guard let optionalText = items005Value["Element_000"] as? String else {
-            return parsedData
-        }
-        
-        guard let optionalStat = items005Value["Element_001"] as? String else {
-            return parsedData
-        }
-        
-        guard let itemquality = items001Value["qualityValue"] as? Int  else {
-            return parsedData
-        }
-        
-        let needData = [weaponseColor, optionalText, optionalStat, randomSealEffect1Text, randomSealEffect2Text, randomSealEffect3Text,  String(itemquality), randomSealEffectText]
-        
-        for data in needData {
-            parsedData.append(data)
-        }
+        let randomSealEffect1 = randomSealEffects?["Element_000"] as? [String:AnyObject]
+        let randomSealEffect1Text = randomSealEffect1?["contentStr"] as? String
+        let randomSealEffect2 = randomSealEffects?["Element_001"] as? [String:AnyObject]
+        let randomSealEffect2Text = randomSealEffect2?["contentStr"] as? String
+        let randomSealEffect3 = randomSealEffects?["Element_002"] as? [String:AnyObject]
+        let randomSealEffect3Text = randomSealEffect3?["contentStr"] as? String
+
+        let parsedData = [strQualityValue, optionalText, optionalStat, randomSealEffect1Text, randomSealEffect2Text, randomSealEffect3Text, randomSealEffectText]
+        print(parsedData)
+        return parsedData
     } catch {
         print("JSON 파싱 에러")
+        return []
     }
-    
-    return parsedData
 }
 
 

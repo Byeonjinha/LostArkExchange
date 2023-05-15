@@ -8,23 +8,12 @@
 import SwiftUI
 
 struct AccessoriesDescriptionView: View {
-    
-    @Binding var accessoriesName: String
-    @Binding var accessoriesImage: String
-    @Binding var accessoriesColor: String
-    @Binding var accessoriesOptionalText: String
-    @Binding var accessoriesOptionalStat: String
-    @Binding var accessoriesRandomEffect1: String
-    @Binding var accessoriesRandomEffect2: String
-    @Binding var accessoriesRandomEffect3: String
-    @Binding var accessoriesQuality: String
-    @Binding var accessoriesQualityColor: Color
-    @Binding var accessoriesRandomEffectText: String
+    @Binding var accessories: AccessoriesViewData
     
     var body: some View {
         VStack {
             HStack {
-                AsyncImage(url: URL(string: accessoriesImage)) { phash in
+                AsyncImage(url: URL(string: accessories.image)) { phash in
                     if let image = phash.image {
                         image.ImageModifier()
                     } else if phash.error != nil {
@@ -39,28 +28,29 @@ struct AccessoriesDescriptionView: View {
                 }
                 .multilineTextAlignment(.leading)
                 .frame(width: w * 0.05)
-                Text("\(accessoriesName)")
-                    .foregroundColor(Color(hex: accessoriesColor))
-                Text("[\(accessoriesQuality)]")
-                    .foregroundColor(accessoriesQualityColor)
+                Text("\(accessories.name)")
+                    .foregroundColor(accessories.gradeColor)
+                Text("[\(accessories.quality)]")
+                    .foregroundColor(accessories.qualityColor)
                 Spacer()
             }
+            Spacer()
             HStack {
                 VStack {
-                    HTMLView(html: accessoriesOptionalText, isScrollEnabled: false)
-                        .frame(height: h * 0.025)
-                    HTMLView(html: accessoriesOptionalStat, isScrollEnabled: false)
+                    ForEach([accessories.optionalText, accessories.optionalStat], id: \.self) { content in
+                        HTMLView(html: content, isScrollEnabled: false)
+                            .frame(height: h * 0.025)
+                    }
                     Spacer()
                 }
                 VStack {
-                    HTMLView(html: "<FONT COLOR=\'#A9D0F5\'>무작위 각인 효과</FONT>", isScrollEnabled: false)
-                        .frame(height: h * 0.025)
-                    HTMLView(html:accessoriesRandomEffect1, isScrollEnabled: false)
-                        .frame(height: h * 0.025)
-                    HTMLView(html:accessoriesRandomEffect2, isScrollEnabled: false)
-                        .frame(height: h * 0.025)
-                    HTMLView(html:accessoriesRandomEffect3, isScrollEnabled: false)
-                        .frame(height: h * 0.025)
+                    ForEach(["<FONT COLOR=\'#A9D0F5\'>무작위 각인 효과</FONT>",
+                             accessories.randomEffect1,
+                             accessories.randomEffect2,
+                             accessories.randomEffect3], id: \.self) { content in
+                        HTMLView(html: content, isScrollEnabled: false)
+                            .frame(height: h * 0.025)
+                    }
                     Spacer()
                 }
             }
