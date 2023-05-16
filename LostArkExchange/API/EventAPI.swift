@@ -8,11 +8,11 @@
 import Foundation
 
 class EventAPI: ObservableObject {
-    
     static let shared = EventAPI()
     @Published var serverNames: [(String,Int,Int)] = []
     @Published var worldIDs: [Int] = []
     @Published var posts = [Event]()
+    @Published var serverError: Bool = false
     private let auth = Bundle.main.infoDictionary?["Auth"] as? String
 
     func getMyIP() {
@@ -42,32 +42,44 @@ class EventAPI: ObservableObject {
                 print(error.localizedDescription)
                 return
             }
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else{
+            guard let response = response as? HTTPURLResponse else{
                 return
             }
-            guard let data = data else{
-                return
-            }
-            do{
-                let apiResponse = try JSONDecoder().decode(Event.self, from: data)
-                DispatchQueue.main.async {
-                    self.posts.append(apiResponse)
+            
+            switch response.statusCode {
+            case 200:
+                guard let data = data else{
+                    return
                 }
-            } catch let DecodingError.dataCorrupted(context) {
-                print(context)
-            } catch let DecodingError.keyNotFound(key, context) {
-                print("키문제 '\(key)' not found:", context.debugDescription)
-                print("코딩패스문제:", context.codingPath)
-            } catch let DecodingError.valueNotFound(value, context) {
-                print("값문제 '\(value)' not found:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-            } catch let DecodingError.typeMismatch(type, context)  {
-                print("타입문제 '\(type)' mismatch:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-            } catch {
-                print("error: ", error)
+                do{
+                    let apiResponse = try JSONDecoder().decode(Event.self, from: data)
+                    DispatchQueue.main.async {
+                        self.posts.append(apiResponse)
+                        print(apiResponse, "APIAPI")
+                    }
+                } catch let DecodingError.dataCorrupted(context) {
+                    print("dataCorrupted")
+                    print(context)
+                } catch let DecodingError.keyNotFound(key, context) {
+                    print("키문제 '\(key)' not found:", context.debugDescription)
+                    print("코딩패스문제:", context.codingPath)
+                } catch let DecodingError.valueNotFound(value, context) {
+                    print("값문제 '\(value)' not found:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch let DecodingError.typeMismatch(type, context)  {
+                    print("타입문제 '\(type)' mismatch:", context.debugDescription)
+                    print("codingPath:", context.codingPath)
+                } catch {
+                    print("error: ", error)
+                }
+            case 503:
+                DispatchQueue.main.async {
+                    self.serverError = true
+                }
+            default:
+                // 다른 상태 코드 처리
+                print("상태 코드:", response.statusCode)
             }
-
         }
         task.resume()
     }

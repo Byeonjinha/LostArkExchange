@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct CharacterImageView: View {
-    
+    var gameData: GameData
     var characterImage: String
     var expeditionLevel: String
-    var itemMaxLevel: String
-    var characterClassName: String
-    var serverName: String
+    
     var body: some View {
         HStack {
             AsyncImage(url: URL(string: characterImage)) { phash in
@@ -38,12 +36,12 @@ struct CharacterImageView: View {
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text("서버: \(serverName)")
-                    Text("클래스: \(characterClassName)")
+                    Text("서버: \(gameData.serverName)")
+                    Text("클래스: \(gameData.characterClassName)")
                 }
                 VStack(alignment: .leading) {
                     Text("탐험 레벨: \(expeditionLevel)")
-                    Text("아이템 레벨: \(itemMaxLevel)")
+                    Text("아이템 레벨: \(gameData.itemMaxLevel)")
                 }
             }
             

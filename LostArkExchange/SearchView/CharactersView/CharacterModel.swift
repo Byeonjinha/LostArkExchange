@@ -77,4 +77,11 @@ enum Item {
     case abilitystone
 }
 
+struct GameData {
+    var itemMaxLevel: String
+    var characterClassName: String
+    var serverName: String
+    var characterName: String
+    var characterLevel: String
+}
 

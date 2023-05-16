@@ -50,6 +50,7 @@ struct BookmarkView: View {
                                         pageNo: 1
                                     )
                                     searchItemByCondition.posts = []
+                               
                                     searchItemByCondition.getMyIP (
                                         parameter: parameter
                                     )
