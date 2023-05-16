@@ -53,11 +53,7 @@ class EventAPI: ObservableObject {
                 }
                 do{
                     let apiResponse = try JSONDecoder().decode(Event.self, from: data)
-                    DispatchQueue.main.async {
-                        print(apiResponse, "APIAPI")
-                    }
                 } catch let DecodingError.dataCorrupted(context) {
-                    print("dataCorrupted")
                     print(context)
                 } catch let DecodingError.keyNotFound(key, context) {
                     print("키문제 '\(key)' not found:", context.debugDescription)
@@ -76,7 +72,6 @@ class EventAPI: ObservableObject {
                     self.serverError = true
                 }
             default:
-                // 다른 상태 코드 처리
                 print("상태 코드:", response.statusCode)
             }
         }

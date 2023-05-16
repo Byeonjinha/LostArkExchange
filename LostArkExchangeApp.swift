@@ -19,18 +19,17 @@ struct LostArkExchangeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if NetworkReachability.isConnectedToNetwork() {
-                if !searchEvent.serverError{
-                    MainView()
-                        .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                        .task {
-                            await searchAuctionOptions.getMyIP()
-                            await searchEvent.getMyIP()
-                        }
-                } else {
-                    ServerErrorView()
-                }
-            } else {
+            switch (NetworkReachability.isConnectedToNetwork(), searchEvent.serverError) {
+            case (true, false):
+                MainView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .task {
+                        await searchAuctionOptions.getMyIP()
+                        await searchEvent.getMyIP()
+                    }
+            case (_, true):
+                ServerErrorView()
+            default:
                 DisconnectedNetWorkView()
             }
         }
