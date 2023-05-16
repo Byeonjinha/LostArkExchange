@@ -13,16 +13,23 @@ struct CharacterDetailView: View {
     @StateObject private var searchCharacterEqupments = EquipmentsAPI.shared
     @StateObject private var searchCharacterEngraings = EngravingsAPI.shared
     
-    var gameData: GameData
+    var characterName: String
+    var characterClassName: String
+    var characterLevel: String
+    var serverName: String
+    var itemAvgLevel: String
+    var itemMaxLevel: String
+
     var body: some View {
         HStack {
-            if searchCharacterProfile.posts?[gameData.characterName] != nil {
-                let expeditionLevel: String = String(searchCharacterProfile.posts?[gameData.characterName]?.expeditionLevel ?? 0)
-                if let characterImage =  searchCharacterProfile.posts?[gameData.characterName]?.characterImage {
+            if searchCharacterProfile.posts?[characterName] != nil {
+                let expeditionLevel: String = String(searchCharacterProfile.posts?[characterName]?.expeditionLevel ?? 0)
+                
+                if let characterImage =  searchCharacterProfile.posts?[characterName]?.characterImage {
                     VStack {
-                        CharacterImageView(gameData: gameData, characterImage: characterImage, expeditionLevel: expeditionLevel)
+                        CharacterImageView(characterImage: characterImage, expeditionLevel: expeditionLevel, itemMaxLevel: itemMaxLevel, characterClassName: characterClassName, serverName: serverName)
                         Spacer()
-                        CharacterDetailEquipmentsView(characterName: gameData.characterName)
+                        CharacterDetailEquipmentsView(characterName: self.characterName)
                     }
                 } else {
                     VStack {
@@ -37,18 +44,18 @@ struct CharacterDetailView: View {
                             
                             HStack {
                                 VStack(alignment: .leading) {
-                                    Text("서버: \(gameData.serverName)")
-                                    Text("클래스: \(gameData.characterClassName)")
+                                    Text("서버: \(serverName)")
+                                    Text("클래스: \(characterClassName)")
                                 }
                                 VStack(alignment: .leading) {
                                     Text("탐험 레벨: \(expeditionLevel)")
-                                    Text("아이템 레벨: \(gameData.itemMaxLevel)")
+                                    Text("아이템 레벨: \(itemMaxLevel)")
                                 }
                             }
                             
                             Spacer()
                         }
-                        CharacterDetailEquipmentsView(characterName: gameData.characterName)
+                        CharacterDetailEquipmentsView(characterName: self.characterName)
                     }
                 }
             }

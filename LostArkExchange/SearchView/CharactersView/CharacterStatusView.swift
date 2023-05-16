@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct CharacterStatusView: View {
-    var gameData: GameData
+    var characterName: String
+    var characterClassName: String
+    var characterLevel: String
+    var serverName: String
+    var itemAvgLevel: String
+    var itemMaxLevel: String
     @State var isViewDetail: Bool = false
     var body: some View {
         VStack {
             HStack {
-                Text(gameData.characterName)
+                Text(characterName)
                 Spacer()
                 Button(action:{
                     isViewDetail.toggle()
@@ -31,7 +36,12 @@ struct CharacterStatusView: View {
             }
             
             ScrollView (.horizontal, showsIndicators: false) {
-                CharacterDetailView(gameData: gameData)
+                CharacterDetailView(characterName: characterName,
+                                    characterClassName: characterClassName,
+                                    characterLevel: characterLevel,
+                                    serverName: serverName,
+                                    itemAvgLevel: itemAvgLevel,
+                                    itemMaxLevel: itemMaxLevel)
                 .frame(width: w * 0.9 , height: isViewDetail ? h * 0.32 : 0)
             }
         }

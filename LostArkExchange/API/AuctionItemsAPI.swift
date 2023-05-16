@@ -6,14 +6,12 @@
 //
 
 import Foundation
- 
+
 class AuctionItemsAPI: ObservableObject {
     @Published var posts = [SearchItems]()
     static let shared = AuctionItemsAPI()
     private let auth = Bundle.main.infoDictionary?["Auth"] as? String
     func getMyIP(parameter: String) {
-        print("또 왜")
-        print(parameter)
         let url = URL(string: "https://developer-lostark.game.onstove.com/auctions/items")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

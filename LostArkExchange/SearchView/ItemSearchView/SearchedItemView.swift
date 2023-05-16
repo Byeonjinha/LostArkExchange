@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchedItemView: View {
+    
     @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
     @StateObject private var searchItemByCondition = AuctionItemsAPI.shared
     
@@ -40,7 +41,6 @@ struct SearchedItemView: View {
                                 skillOptions: searchItemConditions.strSkillOptions,
                                 pageNo: pageNo
                             )
-                            print(parameter, "asdfkajskdjfn????")
                             searchItemByCondition.getMyIP (parameter: parameter)
                         }
                         preventButtonTouch = false
@@ -72,8 +72,7 @@ struct SearchedItemView: View {
                                     skillOptions: searchItemConditions.strSkillOptions,
                                     pageNo: pageNo
                                 )
-                                print(parameter, "mmmmmmmm????")
-//                                searchItemByCondition.getMyIP (parameter: parameter)
+                                searchItemByCondition.getMyIP (parameter: parameter)
                             }
                         }
                         preventButtonTouch = false
