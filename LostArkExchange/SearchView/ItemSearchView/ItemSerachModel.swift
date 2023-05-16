@@ -28,4 +28,5 @@ struct SearchItemConditions: Identifiable {
     var selectionTiersOption: Int
     var strEtcOptions: String
     var strSkillOptions: String
+    var page: Int = 1
 }

@@ -12,13 +12,8 @@ struct SearchedItemView: View {
     @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
     @StateObject private var searchItemByCondition = AuctionItemsAPI.shared
     
-    var searchItemName: String
-    var gradesOption: String
-    var categoriesOption: Int
-    var itemGradeQuality: String
-    var tiersOption: Int
-    var strEtcOptions: String
-    var strSkillOptions: String
+    var searchItemConditions: SearchItemConditions
+    
     @State var preventButtonTouch = false
     @State var pageNo: Int
     
@@ -37,13 +32,13 @@ struct SearchedItemView: View {
                             searchItemByCondition.posts = []
                             pageNo -= 1
                             let parameter = transSearchCondition(
-                                itemName: searchItemName,
-                                itemGrade: gradesOption,
-                                categoryCode: categoriesOption,
-                                itemGradeQuality: itemGradeQuality ,
-                                itemTier: tiersOption,
-                                etcOptions: strEtcOptions,
-                                skillOptions: strSkillOptions,
+                                itemName: searchItemConditions.searchItemName,
+                                itemGrade: searchItemConditions.selectionGradesOption,
+                                categoryCode: searchItemConditions.selectionCategoriesOption,
+                                itemGradeQuality: searchItemConditions.itemGradeQuality ,
+                                itemTier: searchItemConditions.selectionTiersOption,
+                                etcOptions: searchItemConditions.strEtcOptions,
+                                skillOptions: searchItemConditions.strSkillOptions,
                                 pageNo: pageNo
                             )
                             searchItemByCondition.getMyIP (parameter: parameter)
@@ -68,13 +63,13 @@ struct SearchedItemView: View {
                                 searchItemByCondition.posts = []
                                 pageNo += 1
                                 let parameter = transSearchCondition(
-                                    itemName: searchItemName,
-                                    itemGrade: gradesOption,
-                                    categoryCode: categoriesOption,
-                                    itemGradeQuality: itemGradeQuality ,
-                                    itemTier: tiersOption,
-                                    etcOptions: strEtcOptions,
-                                    skillOptions: strSkillOptions,
+                                    itemName: searchItemConditions.searchItemName,
+                                    itemGrade: searchItemConditions.selectionGradesOption,
+                                    categoryCode: searchItemConditions.selectionCategoriesOption,
+                                    itemGradeQuality: searchItemConditions.itemGradeQuality ,
+                                    itemTier: searchItemConditions.selectionTiersOption,
+                                    etcOptions: searchItemConditions.strEtcOptions,
+                                    skillOptions: searchItemConditions.strSkillOptions,
                                     pageNo: pageNo
                                 )
                                 searchItemByCondition.getMyIP (parameter: parameter)
@@ -150,7 +145,7 @@ struct SearchedItemView: View {
                             }
                         }     .frame(height: h)
                     } else {
-                        Text("아이템이 없습니다..")
+                        Text("아이템이 없습니다.")
                     }
                 }
                 .font(Font.custom("PoorStory-Regular", size: 8, relativeTo: .title))

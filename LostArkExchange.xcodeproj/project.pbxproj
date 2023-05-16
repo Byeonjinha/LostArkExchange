@@ -47,6 +47,8 @@
 		BA379E5A296C144000FC1F28 /* SkillOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379E59296C144000FC1F28 /* SkillOptionsView.swift */; };
 		BA55F7C42A12FE14000F3BEA /* ItemSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55F7C32A12FE14000F3BEA /* ItemSearchViewModel.swift */; };
 		BA55F7C62A13135B000F3BEA /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55F7C52A13135B000F3BEA /* WebViewModel.swift */; };
+		BA55F7CE2A132113000F3BEA /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55F7CD2A132113000F3BEA /* BookmarkView.swift */; };
+		BA55F7D02A1344AB000F3BEA /* ItemAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55F7CF2A1344AB000F3BEA /* ItemAddView.swift */; };
 		BA794493296C180800D8B8CA /* ItemSkillOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA794492296C180800D8B8CA /* ItemSkillOptionsView.swift */; };
 		BA794497296D623800D8B8CA /* SearchedItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA794496296D623800D8B8CA /* SearchedItemView.swift */; };
 		BA794499296E98C100D8B8CA /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA794498296E98C100D8B8CA /* ColorExtension.swift */; };
@@ -65,7 +67,7 @@
 		BA9FEF8529833EFD00BC0669 /* BraceletDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF8429833EFD00BC0669 /* BraceletDescriptionView.swift */; };
 		BA9FEF872983B15800BC0669 /* AbilityStoneDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9FEF862983B15800BC0669 /* AbilityStoneDescriptionView.swift */; };
 		BAE5819B2A0A2C24009A1567 /* CharacterViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819A2A0A2C24009A1567 /* CharacterViewModel .swift */; };
-		BAE5819D2A0A3253009A1567 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819C2A0A3253009A1567 /* Functions.swift */; };
+		BAE5819D2A0A3253009A1567 /* parseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819C2A0A3253009A1567 /* parseFunctions.swift */; };
 		BAE581A02A0A3986009A1567 /* CharacterEquipmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE5819F2A0A3986009A1567 /* CharacterEquipmentsView.swift */; };
 		BAE581A22A0A3C11009A1567 /* CharacterEngravingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE581A12A0A3C11009A1567 /* CharacterEngravingsView.swift */; };
 		BAE581A42A0A3D5B009A1567 /* CharacterAccesoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE581A32A0A3D5B009A1567 /* CharacterAccesoriesView.swift */; };
@@ -136,6 +138,8 @@
 		BA379E59296C144000FC1F28 /* SkillOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillOptionsView.swift; sourceTree = "<group>"; };
 		BA55F7C32A12FE14000F3BEA /* ItemSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchViewModel.swift; sourceTree = "<group>"; };
 		BA55F7C52A13135B000F3BEA /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
+		BA55F7CD2A132113000F3BEA /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+		BA55F7CF2A1344AB000F3BEA /* ItemAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAddView.swift; sourceTree = "<group>"; };
 		BA794492296C180800D8B8CA /* ItemSkillOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSkillOptionsView.swift; sourceTree = "<group>"; };
 		BA794496296D623800D8B8CA /* SearchedItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedItemView.swift; sourceTree = "<group>"; };
 		BA794498296E98C100D8B8CA /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -156,7 +160,7 @@
 		BA9FEF8429833EFD00BC0669 /* BraceletDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraceletDescriptionView.swift; sourceTree = "<group>"; };
 		BA9FEF862983B15800BC0669 /* AbilityStoneDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityStoneDescriptionView.swift; sourceTree = "<group>"; };
 		BAE5819A2A0A2C24009A1567 /* CharacterViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterViewModel .swift"; sourceTree = "<group>"; };
-		BAE5819C2A0A3253009A1567 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		BAE5819C2A0A3253009A1567 /* parseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parseFunctions.swift; sourceTree = "<group>"; };
 		BAE5819F2A0A3986009A1567 /* CharacterEquipmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEquipmentsView.swift; sourceTree = "<group>"; };
 		BAE581A12A0A3C11009A1567 /* CharacterEngravingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEngravingsView.swift; sourceTree = "<group>"; };
 		BAE581A32A0A3D5B009A1567 /* CharacterAccesoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAccesoriesView.swift; sourceTree = "<group>"; };
@@ -222,7 +226,7 @@
 				BA9FEF762982E43E00BC0669 /* CharacterDetailEquipmentsView.swift */,
 				BAE5819A2A0A2C24009A1567 /* CharacterViewModel .swift */,
 				BAE581A52A0A46D9009A1567 /* CharacterModel.swift */,
-				BAE5819C2A0A3253009A1567 /* Functions.swift */,
+				BAE5819C2A0A3253009A1567 /* parseFunctions.swift */,
 			);
 			path = CharactersView;
 			sourceTree = "<group>";
@@ -259,6 +263,7 @@
 				BA379DBE2965650D00FC1F28 /* MainView.swift */,
 				BA9FEF6F298112A200BC0669 /* CharacterImageView.swift */,
 				BA177C68297806FC00988613 /* TextLimiter.swift */,
+				BA55F7CC2A132108000F3BEA /* BookmarkView */,
 				BA9FEF7B298309D900BC0669 /* EquipmentDescriptionView */,
 				BA9FEF732981AA2000BC0669 /* HTMLView */,
 				BA7944A329701A3F00D8B8CA /* AdMob */,
@@ -343,6 +348,15 @@
 				A114930CEF5742BB6AA46DF3 /* Pods_LostArkExchangeTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA55F7CC2A132108000F3BEA /* BookmarkView */ = {
+			isa = PBXGroup;
+			children = (
+				BA55F7CD2A132113000F3BEA /* BookmarkView.swift */,
+				BA55F7CF2A1344AB000F3BEA /* ItemAddView.swift */,
+			);
+			path = BookmarkView;
 			sourceTree = "<group>";
 		};
 		BA794494296C188600D8B8CA /* WebView */ = {
@@ -715,13 +729,15 @@
 				BA9FEF772982E43E00BC0669 /* CharacterDetailEquipmentsView.swift in Sources */,
 				BA1DE7532A1238A900D823F4 /* CharacterItemViewModel.swift in Sources */,
 				BA9FEF752981BE8B00BC0669 /* EngravingsAPI.swift in Sources */,
-				BAE5819D2A0A3253009A1567 /* Functions.swift in Sources */,
+				BAE5819D2A0A3253009A1567 /* parseFunctions.swift in Sources */,
 				BA9FEF6E297A767200BC0669 /* EquipmentsAPI.swift in Sources */,
 				BA379DF6296880DE00FC1F28 /* ItemSearchCategoriesView.swift in Sources */,
 				BA379E192968D70F00FC1F28 /* WebViewViewModel.swift in Sources */,
 				BA177C6729772F1600988613 /* CharacterProfileAPI.swift in Sources */,
 				BA7944A529701A3F00D8B8CA /* AdmobBanner.swift in Sources */,
+				BA55F7CE2A132113000F3BEA /* BookmarkView.swift in Sources */,
 				BA9FEF7D298309EA00BC0669 /* EquipmentDescriptionView.swift in Sources */,
+				BA55F7D02A1344AB000F3BEA /* ItemAddView.swift in Sources */,
 				BA379DBD2965650D00FC1F28 /* LostArkExchangeApp.swift in Sources */,
 				BA379E102968D21C00FC1F28 /* LoaEventsView.swift in Sources */,
 				BA9FEF8529833EFD00BC0669 /* BraceletDescriptionView.swift in Sources */,

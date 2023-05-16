@@ -85,3 +85,17 @@ func findItemQualityColor(quaility: Int) -> Color {
         return Color.white
     }
 }
+
+extension ItemConditionEntity {
+    func populate(conditionName: String, itemName: String, itemGrade: String, categoryCode: Int, itemGradeQuality: String, itemTier: Int, etcOptions: String, skillOptions: String) {
+        self.conditionName = conditionName
+        self.itemName = itemName
+        self.itemGrade = itemGrade
+        self.categoryCode = Int64(categoryCode)
+        self.itemGradeQuality = itemGradeQuality
+        self.itemTier = Int64(itemTier)
+        self.etcOptions = etcOptions
+        self.skillOptions = skillOptions
+        self.timestamp = Date()
+    }
+}
