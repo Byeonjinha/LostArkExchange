@@ -20,12 +20,16 @@ struct LostArkExchangeApp: App {
     var body: some Scene {
         WindowGroup {
             if NetworkReachability.isConnectedToNetwork() {
-                MainView()
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .task {
-                        await searchAuctionOptions.getMyIP()
-                        await searchEvent.getMyIP()
-                    }
+                if !searchEvent.serverError{
+                    MainView()
+                        .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                        .task {
+                            await searchAuctionOptions.getMyIP()
+                            await searchEvent.getMyIP()
+                        }
+                } else {
+                    ServerErrorView()
+                }
             } else {
                 DisconnectedNetWorkView()
             }

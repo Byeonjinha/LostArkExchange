@@ -13,3 +13,9 @@ struct DisconnectedNetWorkView: View {
     }
 }
 
+
+struct ServerErrorView: View {
+    var body: some View {
+        Text("서버점검 중입니다.")
+    }
+}

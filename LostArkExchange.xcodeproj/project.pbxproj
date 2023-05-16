@@ -34,9 +34,6 @@
 		BA379DF6296880DE00FC1F28 /* ItemSearchCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379DF5296880DE00FC1F28 /* ItemSearchCategoriesView.swift */; };
 		BA379DF92968827B00FC1F28 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379DF82968827B00FC1F28 /* AppExtensions.swift */; };
 		BA379E01296890C100FC1F28 /* CategoriesPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379E00296890C100FC1F28 /* CategoriesPickerView.swift */; };
-		BA379E0A2968AC9A00FC1F28 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BA379E092968AC9A00FC1F28 /* RxCocoa */; };
-		BA379E0C2968AC9A00FC1F28 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = BA379E0B2968AC9A00FC1F28 /* RxRelay */; };
-		BA379E0E2968AC9A00FC1F28 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BA379E0D2968AC9A00FC1F28 /* RxSwift */; };
 		BA379E102968D21C00FC1F28 /* LoaEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379E0F2968D21C00FC1F28 /* LoaEventsView.swift */; };
 		BA379E122968D31C00FC1F28 /* ItemSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA379E112968D31C00FC1F28 /* ItemSearchView.swift */; };
 		BA379E152968D5EB00FC1F28 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA379E142968D5EB00FC1F28 /* WebKit.framework */; };
@@ -177,9 +174,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA379E152968D5EB00FC1F28 /* WebKit.framework in Frameworks */,
-				BA379E0E2968AC9A00FC1F28 /* RxSwift in Frameworks */,
-				BA379E0C2968AC9A00FC1F28 /* RxRelay in Frameworks */,
-				BA379E0A2968AC9A00FC1F28 /* RxCocoa in Frameworks */,
 				68D1E42E18B567C787C31D65 /* Pods_LostArkExchange.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +215,7 @@
 			children = (
 				BAE5819E2A0A3882009A1567 /* CharacterItemViews */,
 				BA177C5F2976BE7D00988613 /* CharacterSearchView.swift */,
+				BA9FEF6F298112A200BC0669 /* CharacterImageView.swift */,
 				BA177C622976CA2600988613 /* CharacterStatusView.swift */,
 				BA177C642976CB7E00988613 /* CharacterDetailView.swift */,
 				BA9FEF762982E43E00BC0669 /* CharacterDetailEquipmentsView.swift */,
@@ -261,7 +256,6 @@
 			children = (
 				BA7944A0297000C000D8B8CA /* Info.plist */,
 				BA379DBE2965650D00FC1F28 /* MainView.swift */,
-				BA9FEF6F298112A200BC0669 /* CharacterImageView.swift */,
 				BA177C68297806FC00988613 /* TextLimiter.swift */,
 				BA55F7CC2A132108000F3BEA /* BookmarkView */,
 				BA9FEF7B298309D900BC0669 /* EquipmentDescriptionView */,
@@ -472,9 +466,6 @@
 			);
 			name = LostArkExchange;
 			packageProductDependencies = (
-				BA379E092968AC9A00FC1F28 /* RxCocoa */,
-				BA379E0B2968AC9A00FC1F28 /* RxRelay */,
-				BA379E0D2968AC9A00FC1F28 /* RxSwift */,
 			);
 			productName = LostArkExchange;
 			productReference = BA379DB92965650D00FC1F28 /* LostArkExchange.app */;
@@ -552,7 +543,6 @@
 			);
 			mainGroup = BA379DB02965650D00FC1F28;
 			packageReferences = (
-				BA379E082968AC9A00FC1F28 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = BA379DBA2965650D00FC1F28 /* Products */;
 			projectDirPath = "";
@@ -1102,35 +1092,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		BA379E082968AC9A00FC1F28 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		BA379E092968AC9A00FC1F28 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BA379E082968AC9A00FC1F28 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		BA379E0B2968AC9A00FC1F28 /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BA379E082968AC9A00FC1F28 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		BA379E0D2968AC9A00FC1F28 /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BA379E082968AC9A00FC1F28 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		BA379DC72965650E00FC1F28 /* LostArkExchange.xcdatamodeld */ = {

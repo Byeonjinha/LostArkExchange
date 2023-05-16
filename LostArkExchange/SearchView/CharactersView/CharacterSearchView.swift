@@ -98,13 +98,13 @@ struct CharacterSearchView: View {
                         if searchCharacters.posts[0] != nil {
                             ForEach(searchCharacters.posts[0]!.indices , id: \.self) { idx in
                                 Section(header: Text("캐릭터명"), content: {
-                                    let characterName: String = searchCharacters.posts[0]![idx].characterName
-                                    let characterClassName: String = searchCharacters.posts[0]![idx].characterClassName ?? "0"
-                                    let characterLevel: String = String(searchCharacters.posts[0]![idx].characterLevel)
-                                    let serverName: String = searchCharacters.posts[0]![idx].serverName
-                                    let itemAvgLevel: String = searchCharacters.posts[0]![idx].itemAvgLevel ?? "0"
-                                    let itemMaxLevel: String = searchCharacters.posts[0]![idx].itemMaxLevel ?? "0"
-                                    CharacterStatusView(characterName: characterName, characterClassName: characterClassName, characterLevel: characterLevel, serverName: serverName, itemAvgLevel: itemAvgLevel, itemMaxLevel: itemMaxLevel)
+                                    
+                                    let gameData: GameData = GameData(itemMaxLevel: String(searchCharacters.posts[0]![idx].characterLevel),
+                                                                      characterClassName: searchCharacters.posts[0]![idx].characterClassName ?? "0",
+                                                                      serverName: searchCharacters.posts[0]![idx].serverName,
+                                                                      characterName: searchCharacters.posts[0]![idx].characterName,
+                                                                      characterLevel: searchCharacters.posts[0]![idx].itemMaxLevel ?? "0")
+                                    CharacterStatusView(gameData: gameData)
                                 }
                                 )
                             }

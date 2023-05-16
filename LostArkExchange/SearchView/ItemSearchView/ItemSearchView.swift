@@ -64,6 +64,7 @@ struct ItemSearchView: View {
                                         )
                                         
                                         searchItemByCondition.posts = []
+                                        print(parameter,"ItemSearchView")
                                         searchItemByCondition.getMyIP (
                                             parameter: parameter
                                         )
