@@ -54,7 +54,6 @@ class EventAPI: ObservableObject {
                 do{
                     let apiResponse = try JSONDecoder().decode(Event.self, from: data)
                     DispatchQueue.main.async {
-                        self.posts.append(apiResponse)
                         print(apiResponse, "APIAPI")
                     }
                 } catch let DecodingError.dataCorrupted(context) {
