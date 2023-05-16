@@ -10,18 +10,17 @@ import Combine
 
 class WebViewModel: ObservableObject {
     @Published private var isSearchItemPresented = false
-    @Published var selectionOptions: (categories: Int,
-                                      grades: Int,
-                                      gradeQualities: Int,
-                                      tiers: Int,
-                                      itemName: String,
-                                      characterName: String) = (0, 0, 0, 0, "", "")
+    @Published var selectionOptions:SelectionOptions = SelectionOptions(categories: 0,
+                                                      grades: 0,
+                                                      gradeQualities: 0,
+                                                      tiers: 0,
+                                                      itemName: "",
+                                                      characterName: "")
     @Published var urlData: URLData!
     @Published var searchItemConditions: SearchItemConditions!
     
     var foo = PassthroughSubject<Bool, Never>()
     var bar = PassthroughSubject<Bool, Never>()
 }
-
 
 

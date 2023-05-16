@@ -10,10 +10,7 @@ import SwiftUI
 struct ItemSearchCategoriesView: View {
     
     @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
-    @Binding var choicedCategorie: Int
-    @Binding var choicedGrade: Int
-    @Binding var itemGradeQuality: Int
-    @Binding var itemTier: Int
+    @Binding var searchItemInfo: SelectionOptions
     
     var body: some View {
         if !searchAuctionOptions.categories.isEmpty {
@@ -25,7 +22,7 @@ struct ItemSearchCategoriesView: View {
                 .cornerRadius(5)
                 .frame(width: w*0.8, height: h*0.3 )
                 .overlay(
-            CategoriesPickerView(choicedCategorie: $choicedCategorie, choicedGrade: $choicedGrade, itemGradeQuality: $itemGradeQuality, itemTier: $itemTier, categories: categories, itemGrades: itemGrades, itemGradeQualities: itemGradeQualities, itemTiers: itemTiers)
+                    CategoriesPickerView(searchItemInfo: $searchItemInfo, categories: categories, itemGrades: itemGrades, itemGradeQualities: itemGradeQualities, itemTiers: itemTiers)
             )
         } else {
             Color.defaultBlue

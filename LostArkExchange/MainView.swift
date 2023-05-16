@@ -17,9 +17,7 @@ struct MainView: View {
     
     @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
     @StateObject private var searchItemByCondition = AuctionItemsAPI.shared
-    
 
-    
     @ObservedObject var vm = WebViewModel()
     
     private var noticeURL: String = "https://lostark.game.onstove.com/News/Notice/List"
@@ -29,13 +27,8 @@ struct MainView: View {
             .overlay(
                 VStack{
                     TabView {
-                        ItemSearchView(
-                            searchItemName: $vm.selectionOptions.itemName,
-                            selectionCategoriesOption: $vm.selectionOptions.categories,
-                            selectionGradesOption: $vm.selectionOptions.grades,
-                            selectionGradeQualitiesOption: $vm.selectionOptions.gradeQualities,
-                            selectionTiersOption: $vm.selectionOptions.tiers,
-                            searchItemConditions: $vm.searchItemConditions)
+                        ItemSearchView(searchItemInfo: $vm.selectionOptions,
+                                       searchItemConditions: $vm.searchItemConditions)
                         .tabItem {
                             Image(systemName: "magnifyingglass")
                             Text("아이템 검색")

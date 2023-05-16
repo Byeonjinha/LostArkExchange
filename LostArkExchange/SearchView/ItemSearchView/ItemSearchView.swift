@@ -15,40 +15,20 @@ struct ItemSearchView: View {
     @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
     @StateObject private var searchItemByCondition = AuctionItemsAPI.shared
     
-    @Binding var searchItemName: String
-    @Binding var selectionCategoriesOption: Int
-    @Binding var selectionGradesOption: Int
-    @Binding var selectionGradeQualitiesOption: Int
-    @Binding var selectionTiersOption: Int
-    
-    @State var etcOptions: [SelectionEtcOptions] = []
-    @State var skillOptions: [SelectionSkillOptions] = []
-    @State var classIdx: Int = 0
-    
-    @State private var itemGradeQuality: String = ""
-    @State private var strEtcOptions: String = ""
-    @State private var strSkillOptions: String = ""
-    
-    @State private var showingServerAlert: Bool = false
-    @State private var showingTextNullAlert: Bool = false
-    
-    @State private var isBookmarkOn: Bool = false
-    @State private var isAddConditionOn: Bool = false
-    @ObservedObject var addConditionName = TextLimiter(limit: 16)
-    
+    @Binding var searchItemInfo: SelectionOptions
     @Binding var searchItemConditions: SearchItemConditions!
+    
+    @ObservedObject var vm: ItemSearchViewModel
+    init(searchItemInfo: Binding<SelectionOptions>,
+         searchItemConditions: Binding<SearchItemConditions?>) {
+        self._searchItemInfo = searchItemInfo
+        self._searchItemConditions = searchItemConditions
+        _vm = ObservedObject(initialValue: ItemSearchViewModel(searchItemInfo: searchItemInfo))
+    }
     
     public func addItem(conditionName: String, itemName: String, itemGrade: String, categoryCode: Int, itemGradeQuality: String, itemTier: Int, etcOptions: String, skillOptions: String) {
         let newData = ItemConditionEntity(context: viewContext)
-        newData.conditionName = conditionName
-        newData.itemName = itemName
-        newData.itemGrade = itemGrade
-        newData.categoryCode = Int64(categoryCode)
-        newData.itemGradeQuality = itemGradeQuality
-        newData.itemTier = Int64(itemTier)
-        newData.etcOptions = etcOptions
-        newData.skillOptions = skillOptions
-        newData.timestamp = Date()
+        newData.populate(conditionName: conditionName, itemName: itemName, itemGrade: itemGrade, categoryCode: categoryCode, itemGradeQuality: itemGradeQuality, itemTier: itemTier, etcOptions: etcOptions, skillOptions: skillOptions)
         do {
             try viewContext.save()
         } catch {
@@ -64,8 +44,6 @@ struct ItemSearchView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
@@ -82,8 +60,8 @@ struct ItemSearchView: View {
                         .frame(width: w * 0.6, height: h * 0.05)
                         .overlay(
                             HStack {
-                                TextField("" , text : $searchItemName)
-                                    .placeholder(when: searchItemName.isEmpty) {
+                                TextField("" , text : $vm.searchItemInfo.itemName)
+                                    .placeholder(when: vm.searchItemInfo.itemName.isEmpty) {
                                         Text("아이템 이름")
                                             .foregroundColor(.gray)
                                     }
@@ -92,41 +70,41 @@ struct ItemSearchView: View {
                                     .foregroundColor(.gray)
                                 Button(action:{
                                     if !searchAuctionOptions.posts.isEmpty {
-                                        let strEtcOptions: String = searchStrEtcOption()
-                                        let strSkillOptions: String = strSkillOption()
-                                        let itemGradeQuality: String = searchItemGradeQuality()
+                                        let strEtcOptions: String = vm.searchStrEtcOption()
+                                        let strSkillOptions: String = vm.strSkillOption()
+                                        let itemGradeQuality: String = vm.searchItemGradeQuality()
                                         
-                                        self.strEtcOptions = strEtcOptions
-                                        self.itemGradeQuality = itemGradeQuality
-                                        self.strSkillOptions = strSkillOptions
+                                        vm.strEtcOptions = strEtcOptions
+                                        vm.itemGradeQuality = itemGradeQuality
+                                        vm.strSkillOptions = strSkillOptions
                                         
-                                        let parameter = transSearchCondition(
-                                            itemName: searchItemName,
-                                            itemGrade: searchAuctionOptions.itemGrades![selectionGradesOption],
-                                            categoryCode: searchAuctionOptions.categories[selectionCategoriesOption].0,
+                                        let parameter = vm.transSearchCondition(
+                                            itemName: vm.searchItemInfo.itemName,
+                                            itemGrade: searchAuctionOptions.itemGrades![vm.searchItemInfo.grades],
+                                            categoryCode: searchAuctionOptions.categories[vm.searchItemInfo.categories].0,
                                             itemGradeQuality: itemGradeQuality ,
-                                            itemTier: searchAuctionOptions.itemTiers![selectionTiersOption],
+                                            itemTier: searchAuctionOptions.itemTiers![vm.searchItemInfo.tiers],
                                             etcOptions: strEtcOptions,
                                             skillOptions: strSkillOptions,
                                             pageNo: 1
                                         )
-                                        
+
                                         searchItemByCondition.posts = []
                                         searchItemByCondition.getMyIP (
                                             parameter: parameter
                                         )
                                         self.searchItemConditions = SearchItemConditions(
-                                            searchItemName: searchItemName,
-                                            selectionGradesOption: searchAuctionOptions.itemGrades![selectionGradesOption],
-                                            selectionCategoriesOption: searchAuctionOptions.categories[selectionCategoriesOption].0,
+                                            searchItemName: vm.searchItemInfo.itemName,
+                                            selectionGradesOption: searchAuctionOptions.itemGrades![vm.searchItemInfo.grades],
+                                            selectionCategoriesOption: searchAuctionOptions.categories[vm.searchItemInfo.categories].0,
                                             itemGradeQuality: itemGradeQuality,
-                                            selectionTiersOption: searchAuctionOptions.itemTiers![selectionTiersOption],
+                                            selectionTiersOption: searchAuctionOptions.itemTiers![vm.searchItemInfo.tiers],
                                             strEtcOptions: strEtcOptions,
                                             strSkillOptions: strSkillOptions)
                                         
                                         
                                     } else {
-                                        showingServerAlert.toggle()
+                                        vm.showingServerAlert.toggle()
                                     }
                                 })
                                 {
@@ -135,7 +113,7 @@ struct ItemSearchView: View {
                                         .foregroundColor(.gray)
                                         .frame(width: 15, height: 15)
                                         .padding()
-                                        .alert("주의", isPresented: $showingServerAlert) {
+                                        .alert("주의", isPresented: $vm.showingServerAlert) {
                                             Button("Ok") {}
                                         } message: {
                                             Text("서버 정보를 받을 수 없습니다.")
@@ -145,28 +123,28 @@ struct ItemSearchView: View {
                         )
                         .padding()
                     Button(action:{
-                        addConditionName.value = ""
-                        self.isAddConditionOn = true
+                        vm.addConditionName.value = ""
+                        vm.isAddConditionOn = true
                     }){
                         Image(systemName: "plus.square.fill")
                     }
                     Button(action:{
-                        self.isBookmarkOn = true
+                        vm.isBookmarkOn = true
                     }){
                         Image(systemName: "bookmark.fill")
                     }
                 }
                 
                 HStack {
-                    ItemSearchCategoriesView(choicedCategorie: $selectionCategoriesOption, choicedGrade: $selectionGradesOption, itemGradeQuality: $selectionGradeQualitiesOption, itemTier: $selectionTiersOption)
+                    ItemSearchCategoriesView(searchItemInfo: $searchItemInfo)
                 }
                 ScrollView {
                     VStack {
-                        SkillOptionsView(skillOptions: $skillOptions, classIdx: $classIdx)
+                        SkillOptionsView(skillOptions: $vm.skillOptions, classIdx: $vm.classIdx)
                             .frame(width: w)
                             .font(Font.custom("PoorStory-Regular", size: 15, relativeTo: .title))
                             .foregroundColor(.gray)
-                        EtcOptionsView(etcOptions: $etcOptions)
+                        EtcOptionsView(etcOptions: $vm.etcOptions)
                             .frame(width: w)
                             .font(Font.custom("PoorStory-Regular", size: 15, relativeTo: .title))
                             .foregroundColor(.gray)
@@ -175,21 +153,21 @@ struct ItemSearchView: View {
             }
             .sheet(item: $searchItemConditions) { item in
                 SearchedItemView(
-                    searchItemName: searchItemName,
-                    gradesOption: searchAuctionOptions.itemGrades![selectionGradesOption],
-                    categoriesOption: searchAuctionOptions.categories[selectionCategoriesOption].0,
-                    itemGradeQuality: itemGradeQuality,
-                    tiersOption: searchAuctionOptions.itemTiers![selectionTiersOption],
-                    strEtcOptions: strEtcOptions,
-                    strSkillOptions: strSkillOptions, pageNo: 1)
+                    searchItemName: vm.searchItemInfo.itemName,
+                    gradesOption: searchAuctionOptions.itemGrades![vm.searchItemInfo.grades],
+                    categoriesOption: searchAuctionOptions.categories[vm.searchItemInfo.categories].0,
+                    itemGradeQuality: vm.itemGradeQuality,
+                    tiersOption: searchAuctionOptions.itemTiers![vm.searchItemInfo.tiers],
+                    strEtcOptions: vm.strEtcOptions,
+                    strSkillOptions: vm.strSkillOptions, pageNo: 1)
                 
             }
-            if isAddConditionOn {
+            if vm.isAddConditionOn {
                 ZStack {
                     Color.black
                         .opacity(0.5)
                         .onTapGesture {
-                            self.isAddConditionOn = false
+                            vm.isAddConditionOn = false
                         }
                     if #available(iOS 16.0, *) {
                         RoundedRectangle(cornerRadius: 5)
@@ -203,8 +181,8 @@ struct ItemSearchView: View {
                                             .cornerRadius(5)
                                             .frame(width: w * 0.6, height: h * 0.05)
                                             .overlay(
-                                                TextField("" , text : $addConditionName.value)
-                                                    .placeholder(when: addConditionName.value.isEmpty) {
+                                                TextField("" , text : $vm.addConditionName.value)
+                                                    .placeholder(when: vm.addConditionName.value.isEmpty) {
                                                         Text("아이템 조건 이름")
                                                             .foregroundColor(.gray)
                                                     }
@@ -213,18 +191,18 @@ struct ItemSearchView: View {
                                                     .foregroundColor(.gray)
                                             )
                                         Button(action: {
-                                            if addConditionName.value.isEmpty {
-                                                showingTextNullAlert.toggle()
+                                            if vm.addConditionName.value.isEmpty {
+                                                vm.showingTextNullAlert.toggle()
                                             } else {
-                                                addItem(conditionName: addConditionName.value,
-                                                        itemName: searchItemName,
-                                                        itemGrade: searchAuctionOptions.itemGrades![selectionGradesOption],
-                                                        categoryCode: searchAuctionOptions.categories[selectionCategoriesOption].0,
-                                                        itemGradeQuality: itemGradeQuality ,
-                                                        itemTier: searchAuctionOptions.itemTiers![selectionTiersOption],
-                                                        etcOptions: strEtcOptions,
-                                                        skillOptions: strSkillOptions)
-                                                self.isAddConditionOn = false
+                                                addItem(conditionName: vm.addConditionName.value,
+                                                        itemName: vm.searchItemInfo.itemName,
+                                                        itemGrade: searchAuctionOptions.itemGrades![vm.searchItemInfo.grades],
+                                                        categoryCode: searchAuctionOptions.categories[vm.searchItemInfo.categories].0,
+                                                        itemGradeQuality: vm.itemGradeQuality ,
+                                                        itemTier: searchAuctionOptions.itemTiers![vm.searchItemInfo.tiers],
+                                                        etcOptions: vm.strEtcOptions,
+                                                        skillOptions: vm.strSkillOptions)
+                                                vm.isAddConditionOn = false
                                                 
                                                 
                                             }
@@ -232,7 +210,7 @@ struct ItemSearchView: View {
                                         })
                                         {
                                             Image(systemName: "plus.square")
-                                                .alert("주의", isPresented: $showingTextNullAlert) {
+                                                .alert("주의", isPresented: $vm.showingTextNullAlert) {
                                                     Button("Ok") {}
                                                 } message: {
                                                     Text("조건을 공백으로 저장할 수 없습니다.")
@@ -246,12 +224,12 @@ struct ItemSearchView: View {
                     }
                 }
             }
-            if isBookmarkOn {
+            if  vm.isBookmarkOn {
                 ZStack {
                     Color.black
                         .opacity(0.5)
                         .onTapGesture {
-                            self.isBookmarkOn = false
+                            vm.isBookmarkOn = false
                         }
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: w * 0.8 , height: h * 0.5)
@@ -260,15 +238,15 @@ struct ItemSearchView: View {
                                 ForEach(itemConditionData.indices , id: \.self) {idx in
                                     Button(action:{
                                         if !searchAuctionOptions.posts.isEmpty {
-                                            let strEtcOptions: String = searchStrEtcOption()
-                                            let strSkillOptions: String = strSkillOption()
-                                            let itemGradeQuality: String = searchItemGradeQuality()
+                                            let strEtcOptions: String = vm.searchStrEtcOption()
+                                            let strSkillOptions: String = vm.strSkillOption()
+                                            let itemGradeQuality: String = vm.searchItemGradeQuality()
                                             
-                                            self.strEtcOptions = strEtcOptions
-                                            self.itemGradeQuality = itemGradeQuality
-                                            self.strSkillOptions = strSkillOptions
+                                            vm.strEtcOptions = strEtcOptions
+                                            vm.itemGradeQuality = itemGradeQuality
+                                            vm.strSkillOptions = strSkillOptions
                                             
-                                            let parameter = transSearchCondition(
+                                            let parameter = vm.transSearchCondition(
                                                 itemName: itemConditionData[idx].itemName!,
                                                 itemGrade: itemConditionData[idx].itemGrade!,
                                                 categoryCode: Int(itemConditionData[idx].categoryCode),
@@ -291,12 +269,12 @@ struct ItemSearchView: View {
                                                 strEtcOptions: itemConditionData[idx].etcOptions!,
                                                 strSkillOptions: itemConditionData[idx].skillOptions!)
                                         } else {
-                                            showingServerAlert.toggle()
+                                            vm.showingServerAlert.toggle()
                                         }
                                     })
                                     {
                                         Rectangle()
-                                            .alert("주의", isPresented: $showingServerAlert) {
+                                            .alert("주의", isPresented: $vm.showingServerAlert) {
                                                 Button("Ok") {}
                                             } message: {
                                                 Text("서버 정보를 받을 수 없습니다.")
@@ -326,108 +304,18 @@ struct ItemSearchView: View {
             }
         }
     }
-    func strSkillOption() -> String {
-        var strSkillOptions: String = ""
-        for idx in skillOptions.indices {
-            let skillOptionsFirstOption =
-            searchAuctionOptions.skillOptionByCharacterClass[classIdx].skillOptions[skillOptions[idx].SkillOptionValue].value
-            var skillOptionsSecondOption = 0
-            if searchAuctionOptions.skillOptionByCharacterClass[classIdx].skillOptions[skillOptions[idx].SkillOptionValue].tripods.count > skillOptions[idx].TripodValue {
-                skillOptionsSecondOption =
-                searchAuctionOptions.skillOptionByCharacterClass[classIdx].skillOptions[skillOptions[idx].SkillOptionValue].tripods[skillOptions[idx].TripodValue].value
-            }
-            let minValue: String = skillOptions[idx].minValue
-            strSkillOptions += """
-{
-"FirstOption": \(skillOptionsFirstOption),
-"SecondOption": \(skillOptionsSecondOption),
-"MinValue": \(minValue),
-} ,
-"""
-        }
-        return strSkillOptions
-    }
-    
-    func searchStrEtcOption() -> String {
-        var strEtcOptions = ""
-        for idx in etcOptions.indices {
-            let firstOption: Int = searchAuctionOptions.posts[0].etcOptions[etcOptions[idx].etcOptionValue].value
-            let secondOption: Int = searchAuctionOptions.posts[0].etcOptions[etcOptions[idx].etcOptionValue].etcSubs[etcOptions[idx].etcSubValue].value
-            let minValue: String = etcOptions[idx].minValue
-            strEtcOptions += """
-{
-"FirstOption": \(firstOption),
-"SecondOption": \(secondOption),
-"MinValue": \(minValue),
-} ,
-"""
-        }
-        return strEtcOptions
-    }
-    
-    func searchItemGradeQuality() -> String {
-        if selectionGradeQualitiesOption < searchAuctionOptions.itemGradeQualities!.count && searchAuctionOptions.categories[selectionCategoriesOption].1 != "아뮬렛" && searchAuctionOptions.categories[selectionCategoriesOption].1 != "팔찌"{
-            let itemGradeQuality: Int = searchAuctionOptions.itemGradeQualities![selectionGradeQualitiesOption]
-            return
-"""
-"ItemGradeQuality": \(itemGradeQuality),
-"""
-        } else if selectionGradeQualitiesOption == searchAuctionOptions.itemGradeQualities!.count && searchAuctionOptions.categories[selectionCategoriesOption].1 != "아뮬렛" && searchAuctionOptions.categories[selectionCategoriesOption].1 != "팔찌"{
-            return
-"""
-"ItemGradeQuality": 100,
-"""
-        }
-        
-        return ""
-    }
-    
-    func transSearchCondition(itemName: String, itemGrade: String, categoryCode: Int, itemGradeQuality: String, itemTier: Int, etcOptions: String, skillOptions: String, pageNo: Int) -> String {
-        let parameter: String =
-"""
-{
-  "ItemLevelMin": 0,
-  "ItemLevelMax": 1700,
-\(itemGradeQuality)
-  "SKillOptions": [
-    \(skillOptions)
-  ],
-  "EtcOptions": [
-    \(etcOptions)
-  ],
-  "Sort": "BIDSTART_PRICE",
-  "CategoryCode": \(categoryCode),
-  "CharacterClass": "",
-  "ItemTier": \(itemTier),
-  "ItemGrade": "\(itemGrade)",
-  "ItemName": "\(itemName)",
-  "PageNo": "\(pageNo)",
-  "SortCondition": "ASC"
-}
-"""
-        return parameter
-    }
 }
 
-struct SelectionEtcOptions {
-    var etcOptionValue: Int
-    var etcSubValue: Int
-    var minValue: String
-}
-
-struct SelectionSkillOptions {
-    var SkillOptionValue: Int
-    var TripodValue: Int
-    var minValue: String
-}
-
-struct SearchItemConditions: Identifiable {
-    var id = UUID()
-    var searchItemName: String
-    var selectionGradesOption: String
-    var selectionCategoriesOption: Int
-    var itemGradeQuality: String
-    var selectionTiersOption: Int
-    var strEtcOptions: String
-    var strSkillOptions: String
+extension ItemConditionEntity {
+    func populate(conditionName: String, itemName: String, itemGrade: String, categoryCode: Int, itemGradeQuality: String, itemTier: Int, etcOptions: String, skillOptions: String) {
+        self.conditionName = conditionName
+        self.itemName = itemName
+        self.itemGrade = itemGrade
+        self.categoryCode = Int64(categoryCode)
+        self.itemGradeQuality = itemGradeQuality
+        self.itemTier = Int64(itemTier)
+        self.etcOptions = etcOptions
+        self.skillOptions = skillOptions
+        self.timestamp = Date()
+    }
 }

@@ -11,11 +11,7 @@ import UIKit
 var bindingUpdate:()->Void={}
 
 struct CategoriesPickerView: UIViewRepresentable {
-    @Binding var choicedCategorie: Int
-    @Binding var choicedGrade: Int
-    @Binding var itemGradeQuality: Int
-    @Binding var itemTier: Int
-   
+    @Binding var searchItemInfo: SelectionOptions
     
     let categories: [(Int, String)]?
     let itemGrades: [String]?
@@ -26,10 +22,10 @@ struct CategoriesPickerView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIPickerView {
         bindingUpdate={
-            self.choicedCategorie = pickerView.choicedCategorie ?? 0
-            self.choicedGrade = pickerView.choicedGrade ?? 0
-            self.itemGradeQuality = pickerView.itemGradeQuality ?? 0
-            self.itemTier = pickerView.itemTier ?? 0
+            searchItemInfo.categories = pickerView.choicedCategorie ?? 0
+            searchItemInfo.grades = pickerView.choicedGrade ?? 0
+            searchItemInfo.gradeQualities = pickerView.itemGradeQuality ?? 0
+            searchItemInfo.tiers = pickerView.itemTier ?? 0
         }
         return pickerView
     }
