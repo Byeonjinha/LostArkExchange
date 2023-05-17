@@ -53,6 +53,7 @@ class EventAPI: ObservableObject {
                 }
                 do{
                     let apiResponse = try JSONDecoder().decode(Event.self, from: data)
+                    self.posts.append(apiResponse)
                 } catch let DecodingError.dataCorrupted(context) {
                     print(context)
                 } catch let DecodingError.keyNotFound(key, context) {

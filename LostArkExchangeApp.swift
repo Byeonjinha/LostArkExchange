@@ -13,19 +13,20 @@ import SwiftUI
 @main
 struct LostArkExchangeApp: App {
     @UIApplicationDelegateAdaptor var delegate: AppDelegate
-    @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
-    @StateObject private var searchEvent = EventAPI.shared
+    @StateObject private var apiData = APIData.shared
+
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            switch (NetworkReachability.isConnectedToNetwork(), searchEvent.serverError) {
+            switch (NetworkReachability.isConnectedToNetwork(), apiData.searchEvent.serverError) {
             case (true, false):
                 MainView()
+                    .environmentObject(apiData)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .task {
-                        await searchAuctionOptions.getMyIP()
-                        await searchEvent.getMyIP()
+                        await apiData.searchAuctionOptions.getMyIP()
+                        await apiData.searchEvent.getMyIP()
                     }
             case (_, true):
                 ServerErrorView()

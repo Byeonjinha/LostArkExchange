@@ -57,6 +57,7 @@
     } ,
     """
             }
+            searchItemInfo.strSkillOptions = strSkillOptions
             return strSkillOptions
         }
         
@@ -74,24 +75,27 @@
     } ,
     """
             }
+            
+            
+            searchItemInfo.strEtcOptions = strEtcOptions
             return strEtcOptions
         }
         
         func searchItemGradeQuality() -> String {
             if searchItemInfo.gradeQualities < searchAuctionOptions.itemGradeQualities!.count && searchAuctionOptions.categories[searchItemInfo.categories].1 != "아뮬렛" && searchAuctionOptions.categories[searchItemInfo.categories].1 != "팔찌"{
                 let itemGradeQuality: Int = searchAuctionOptions.itemGradeQualities![searchItemInfo.gradeQualities]
-                return
+                searchItemInfo.itemGradeQualities =
     """
     "ItemGradeQuality": \(itemGradeQuality),
     """
             } else if searchItemInfo.gradeQualities == searchAuctionOptions.itemGradeQualities!.count && searchAuctionOptions.categories[searchItemInfo.categories].1 != "아뮬렛" && searchAuctionOptions.categories[searchItemInfo.categories].1 != "팔찌"{
-                return
+                searchItemInfo.itemGradeQualities =
     """
     "ItemGradeQuality": 100,
     """
             }
-            
-            return ""
+            else {searchItemInfo.itemGradeQualities = ""}
+            return searchItemInfo.itemGradeQualities
         }
         
         func transSearchCondition(itemName: String, itemGrade: String, categoryCode: Int, itemGradeQuality: String, itemTier: Int, etcOptions: String, skillOptions: String, pageNo: Int) -> String {

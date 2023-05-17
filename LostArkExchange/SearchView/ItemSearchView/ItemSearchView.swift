@@ -22,7 +22,10 @@ struct ItemSearchView: View {
     init(searchItemInfo: Binding<SelectionOptions>, searchItemConditions: Binding<SearchItemConditions?>) {
         self._searchItemInfo = searchItemInfo
         self._searchItemConditions = searchItemConditions
-        _vm = ObservedObject(initialValue: ItemSearchViewModel(searchAuctionOptions: AuctionOptionsAPI.shared, searchItemByCondition: AuctionItemsAPI.shared, searchItemInfo: searchItemInfo))
+        _vm = ObservedObject(initialValue: ItemSearchViewModel(
+            searchAuctionOptions: AuctionOptionsAPI.shared,
+            searchItemByCondition: AuctionItemsAPI.shared,
+            searchItemInfo: searchItemInfo))
     }
     
     var body: some View {
@@ -56,15 +59,14 @@ struct ItemSearchView: View {
                                             itemName: vm.searchItemInfo.itemName,
                                             itemGrade: searchAuctionOptions.itemGrades![vm.searchItemInfo.grades],
                                             categoryCode: searchAuctionOptions.categories[vm.searchItemInfo.categories].0,
-                                            itemGradeQuality: itemGradeQuality ,
+                                            itemGradeQuality: vm.itemGradeQuality ,
                                             itemTier: searchAuctionOptions.itemTiers![vm.searchItemInfo.tiers],
-                                            etcOptions: strEtcOptions,
-                                            skillOptions: strSkillOptions,
+                                            etcOptions: vm.strEtcOptions,
+                                            skillOptions: vm.strSkillOptions,
                                             pageNo: 1
                                         )
                                         
                                         searchItemByCondition.posts = []
-                                        print(parameter,"ItemSearchView")
                                         searchItemByCondition.getMyIP (
                                             parameter: parameter
                                         )
@@ -127,15 +129,16 @@ struct ItemSearchView: View {
                 }
             }
             .sheet(item: $searchItemConditions) { item in
-                let searchItemconditions: SearchItemConditions = SearchItemConditions(searchItemName: vm.searchItemInfo.itemName,
-                                     selectionGradesOption: searchAuctionOptions.itemGrades![vm.searchItemInfo.grades],
-                                     selectionCategoriesOption: searchAuctionOptions.categories[vm.searchItemInfo.categories].0,
-                                     itemGradeQuality: vm.itemGradeQuality,
-                                     selectionTiersOption: searchAuctionOptions.itemTiers![vm.searchItemInfo.tiers],
-                                     strEtcOptions: vm.strEtcOptions,
-                                     strSkillOptions: vm.strSkillOptions)
+                let searchItemconditions: SearchItemConditions = SearchItemConditions(
+                    searchItemName: vm.searchItemInfo.itemName,
+                    selectionGradesOption: searchAuctionOptions.itemGrades![vm.searchItemInfo.grades],
+                    selectionCategoriesOption: searchAuctionOptions.categories[vm.searchItemInfo.categories].0,
+                    itemGradeQuality: vm.searchItemInfo.itemGradeQualities,
+                    selectionTiersOption: searchAuctionOptions.itemTiers![vm.searchItemInfo.tiers],
+                    strEtcOptions: vm.searchItemInfo.strEtcOptions,
+                    strSkillOptions: vm.searchItemInfo.strSkillOptions)
                 
-                
+      
                 SearchedItemView(searchItemConditions: searchItemconditions, pageNo: 1)
             }
             if vm.isAddConditionOn {

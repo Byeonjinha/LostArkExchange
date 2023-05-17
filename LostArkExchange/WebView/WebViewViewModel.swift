@@ -11,11 +11,14 @@ import Combine
 class WebViewModel: ObservableObject {
     @Published private var isSearchItemPresented = false
     @Published var selectionOptions:SelectionOptions = SelectionOptions(categories: 0,
-                                                      grades: 0,
-                                                      gradeQualities: 0,
-                                                      tiers: 0,
-                                                      itemName: "",
-                                                      characterName: "")
+                                                                        grades: 0,
+                                                                        gradeQualities: 0,
+                                                                        tiers: 0,
+                                                                        itemName: "",
+                                                                        characterName: "",
+                                                                        itemGradeQualities: "",
+                                                                        strEtcOptions: "",
+                                                                        strSkillOptions: "")
     @Published var urlData: URLData!
     @Published var searchItemConditions: SearchItemConditions!
     

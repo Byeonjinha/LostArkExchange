@@ -14,10 +14,6 @@ import SwiftUI
 import WebKit
 
 struct MainView: View {
-    
-    @StateObject private var searchAuctionOptions = AuctionOptionsAPI.shared
-    @StateObject private var searchItemByCondition = AuctionItemsAPI.shared
-
     @ObservedObject var vm = WebViewModel()
     
     private var noticeURL: String = "https://lostark.game.onstove.com/News/Notice/List"

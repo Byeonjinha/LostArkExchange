@@ -34,7 +34,7 @@ struct SearchedItemView: View {
                                 itemName: searchItemConditions.searchItemName,
                                 itemGrade: searchItemConditions.selectionGradesOption,
                                 categoryCode: searchItemConditions.selectionCategoriesOption,
-                                itemGradeQuality: searchItemConditions.itemGradeQuality ,
+                                itemGradeQuality:  searchItemConditions.itemGradeQuality ,
                                 itemTier: searchItemConditions.selectionTiersOption,
                                 etcOptions: searchItemConditions.strEtcOptions,
                                 skillOptions: searchItemConditions.strSkillOptions,
@@ -72,8 +72,7 @@ struct SearchedItemView: View {
                                     skillOptions: searchItemConditions.strSkillOptions,
                                     pageNo: pageNo
                                 )
-                                print(parameter, "mmmmmmmm????")
-//                                searchItemByCondition.getMyIP (parameter: parameter)
+                                searchItemByCondition.getMyIP (parameter: parameter)
                             }
                         }
                         preventButtonTouch = false
@@ -153,8 +152,12 @@ struct SearchedItemView: View {
                 .foregroundColor(.gray)
             }
         }
+        .onAppear{
+            print(searchItemConditions)
+        }
     }
     func transSearchCondition(itemName: String, itemGrade: String, categoryCode: Int, itemGradeQuality: String, itemTier: Int, etcOptions: String, skillOptions: String, pageNo: Int) -> String {
+        print("grade:", itemGradeQuality, "gradeQuality")
         let parameter: String =
 """
 {

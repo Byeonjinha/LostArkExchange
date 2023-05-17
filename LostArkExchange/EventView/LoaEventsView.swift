@@ -1,23 +1,17 @@
-//
-//  LoaEventsView.swift
-//  LostArkExchange
-//
-//  Created by Byeon jinha on 2023/01/07.
-//
-
 import SwiftUI
 
 struct LoaEventsView: View {
     @StateObject private var searchEvent = EventAPI.shared
     @Binding var urlData: URLData?
+    
     var body: some View {
-        if !searchEvent.posts.isEmpty {
-            VStack {
+        VStack {
+            if let posts = searchEvent.posts, !posts.isEmpty {
                 List {
-                    ForEach(searchEvent.posts[0].indices , id: \.self) { idx in
-                        let title: String = searchEvent.posts[0][idx].title
-                        let image: String = searchEvent.posts[0][idx].thumbnail
-                        let url: String = searchEvent.posts[0][idx].link
+                    ForEach(posts[0].indices, id: \.self) { idx in
+                        let title: String = posts[0][idx].title
+                        let image: String = posts[0][idx].thumbnail
+                        let url: String = posts[0][idx].link
                         
                         Button(action: {
                             self.urlData = URLData(id: UUID(), url: url)
@@ -30,6 +24,9 @@ struct LoaEventsView: View {
                     }
                 }
             }
+        }
+        .onAppear{
+            print(searchEvent.posts)
         }
     }
 }

@@ -14,4 +14,7 @@ struct SelectionOptions {
     var tiers: Int
     var itemName: String
     var characterName: String
+    var itemGradeQualities: String
+    var strEtcOptions: String
+    var strSkillOptions: String
 }
